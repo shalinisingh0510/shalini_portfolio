@@ -2,6 +2,7 @@ import { useState } from "react"
 import SectionHeader from "../components/common/SectionHeader"
 import Card from "../components/ui/Card"
 import AnimatedSection from "../components/common/AnimatedSection"
+import Button from "../components/common/Button"
 import { supabase } from "../services/supabaseClient"
 
 const Contact = () => {
@@ -48,7 +49,6 @@ const Contact = () => {
 
         <Card>
           <form onSubmit={handleSubmit} className="space-y-4 max-w-xl">
-
             <input
               type="text"
               name="name"
@@ -56,7 +56,7 @@ const Contact = () => {
               required
               value={form.name}
               onChange={handleChange}
-              className="w-full px-4 py-3 rounded-md bg-background border border-white/10 focus:outline-none focus:border-accent"
+              className="w-full px-4 py-3 rounded-xl bg-card/70 border border-border/70 focus:outline-none focus:ring-2 focus:ring-ring/40 transition"
             />
 
             <input
@@ -66,7 +66,7 @@ const Contact = () => {
               required
               value={form.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 rounded-md bg-background border border-white/10 focus:outline-none focus:border-accent"
+              className="w-full px-4 py-3 rounded-xl bg-card/70 border border-border/70 focus:outline-none focus:ring-2 focus:ring-ring/40 transition"
             />
 
             <textarea
@@ -76,29 +76,24 @@ const Contact = () => {
               rows="4"
               value={form.message}
               onChange={handleChange}
-              className="w-full px-4 py-3 rounded-md bg-background border border-white/10 focus:outline-none focus:border-accent"
+              className="w-full px-4 py-3 rounded-xl bg-card/70 border border-border/70 focus:outline-none focus:ring-2 focus:ring-ring/40 transition"
             />
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="px-6 py-3 rounded-md bg-accent text-white text-sm font-medium hover:opacity-90 transition disabled:opacity-60"
-            >
+            <Button type="submit" disabled={loading} className="disabled:opacity-60">
               {loading ? "Sending..." : "Send Message"}
-            </button>
+            </Button>
 
             {success && (
-              <p className="text-green-400 text-sm">
+              <p className="text-emerald-500 text-sm">
                 Message sent successfully!
               </p>
             )}
 
             {error && (
-              <p className="text-red-400 text-sm">
+              <p className="text-rose-500 text-sm">
                 {error}
               </p>
             )}
-
           </form>
         </Card>
       </AnimatedSection>

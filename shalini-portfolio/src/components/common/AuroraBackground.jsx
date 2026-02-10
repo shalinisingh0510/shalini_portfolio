@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 
 const AuroraBackground = () => {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
+    <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       {/* Left glow */}
       <motion.div
         animate={{
@@ -18,11 +18,12 @@ const AuroraBackground = () => {
           absolute
           top-[-20%]
           left-[-20%]
-          w-[500px]
-          h-[500px]
-          bg-accent/20
+          w-[520px]
+          h-[520px]
           rounded-full
           blur-3xl
+          bg-accent/25
+          dark:bg-accent/20
         "
       />
 
@@ -41,11 +42,36 @@ const AuroraBackground = () => {
           absolute
           bottom-[-20%]
           right-[-20%]
-          w-[500px]
-          h-[500px]
-          bg-purple-500/20
+          w-[520px]
+          h-[520px]
           rounded-full
           blur-3xl
+          bg-highlight/25
+          dark:bg-highlight/20
+        "
+      />
+
+      {/* Center glow */}
+      <motion.div
+        animate={{
+          x: [0, 20, 0],
+          y: [0, -20, 0],
+        }}
+        transition={{
+          duration: 26,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="
+          absolute
+          top-[10%]
+          left-[40%]
+          w-[420px]
+          h-[420px]
+          rounded-full
+          blur-3xl
+          bg-accent/15
+          dark:bg-accent/12
         "
       />
     </div>

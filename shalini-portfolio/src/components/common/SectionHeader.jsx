@@ -10,6 +10,8 @@ const SectionHeader = ({ title, subtitle }) => {
           {subtitle}
         </p>
       )}
+
+      <div className="mt-6 h-px w-24 bg-gradient-to-r from-accent to-highlight/60 rounded-full" />
     </div>
   )
 }

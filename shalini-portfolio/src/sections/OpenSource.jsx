@@ -14,7 +14,7 @@ const OpenSource = () => {
 
         <div className="grid md:grid-cols-2 gap-6">
           {openSourceContributions.map((item) => (
-            <Card key={item.project}>
+            <Card key={item.project} className="h-full">
               <h3 className="text-lg font-semibold">
                 {item.project}
               </h3>
@@ -32,9 +32,25 @@ const OpenSource = () => {
               <a
                 href={item.link}
                 target="_blank"
-                className="inline-block mt-4 text-sm text-accent hover:underline"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-4 text-sm font-semibold text-accent hover:gap-3 transition"
               >
-                View Contribution →
+                <span className="inline-flex items-center justify-center h-7 w-7 rounded-full border border-border/70 bg-foreground/5">
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </span>
+                <span>View Contribution</span>
               </a>
             </Card>
           ))}

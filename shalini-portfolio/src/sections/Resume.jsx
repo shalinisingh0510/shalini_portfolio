@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import Button from "../components/common/Button"
 
 const Resume = () => {
   return (
@@ -12,17 +13,19 @@ const Resume = () => {
           relative
           overflow-hidden
           rounded-2xl
-          border border-white/10
-          bg-white/5
+          border border-border/70
+          bg-card/75
           p-10
           flex flex-col md:flex-row
-          items-center
+          items-start md:items-center
           justify-between
           gap-8
+          shadow-soft
+          backdrop-blur
         "
       >
         {/* Glow */}
-        <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent opacity-0 hover:opacity-100 transition duration-700" />
+        <div className="absolute inset-0 bg-gradient-to-r from-accent/20 via-highlight/15 to-transparent opacity-0 hover:opacity-100 transition duration-700" />
 
         {/* Text */}
         <div className="relative z-10">
@@ -36,25 +39,9 @@ const Resume = () => {
         </div>
 
         {/* Button */}
-        <a
-          href="/resume.pdf"
-          download
-          className="
-            relative z-10
-            inline-flex items-center gap-2
-            px-6 py-3
-            rounded-md
-            bg-accent
-            text-white
-            text-sm font-medium
-            transition
-            hover:gap-3
-            hover:opacity-90
-          "
-        >
-          Download Resume
-          <span className="text-lg">↓</span>
-        </a>
+        <Button as="a" href="/resume.pdf" download className="relative z-10">
+          Download Resume <span className="ml-2 text-lg">?</span>
+        </Button>
       </motion.div>
     </section>
   )

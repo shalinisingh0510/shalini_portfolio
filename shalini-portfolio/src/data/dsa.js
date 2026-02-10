@@ -23,6 +23,18 @@ export const dsaProfile = {
       color: "from-yellow-400/20 to-yellow-400/5",
     },
     {
+      platform: "LinkedIn",
+      username: "shalini-kumari",
+      link: "https://www.linkedin.com/in/shalini-kumari-61190830a/",
+      color: "from-sky-500/20 to-sky-500/5",
+    },
+    {
+      platform: "Instagram",
+      username: "shalinishareyasingh",
+      link: "https://www.instagram.com/shalinishareyasingh/",
+      color: "from-pink-500/20 to-pink-500/5",
+    },
+    {
       platform: "Codeforces",
       username: "Shalu_codethrust",
       link: "https://codeforces.com/profile/Shalu_codethrust",

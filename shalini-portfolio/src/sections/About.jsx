@@ -7,11 +7,10 @@ const About = () => {
     <section id="about" className="py-28">
       <SectionHeader
         title="About Me"
-        subtitle="Not just what I know — but how I think and grow as an engineer."
+        subtitle="Not just what I know, but how I think and grow as an engineer."
       />
 
       <div className="grid md:grid-cols-2 gap-8">
-        
         {/* Story Card */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -45,22 +44,25 @@ const About = () => {
             </h3>
 
             <ul className="space-y-3 text-muted text-sm">
-              <li className="hover:text-foreground transition">
-                • Strong foundation in Data Structures & Algorithms
+              <li className="flex items-start gap-2 hover:text-foreground transition">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent" />
+                <span>Strong foundation in Data Structures & Algorithms</span>
               </li>
-              <li className="hover:text-foreground transition">
-                • Open-source contributor with real PR experience
+              <li className="flex items-start gap-2 hover:text-foreground transition">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent" />
+                <span>Open-source contributor with real PR experience</span>
               </li>
-              <li className="hover:text-foreground transition">
-                • Clean architecture & reusable component mindset
+              <li className="flex items-start gap-2 hover:text-foreground transition">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent" />
+                <span>Clean architecture and reusable component mindset</span>
               </li>
-              <li className="hover:text-foreground transition">
-                • Focus on clarity, not shortcuts
+              <li className="flex items-start gap-2 hover:text-foreground transition">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent" />
+                <span>Focus on clarity, not shortcuts</span>
               </li>
             </ul>
           </Card>
         </motion.div>
-
       </div>
     </section>
   )
