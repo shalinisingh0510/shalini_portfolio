@@ -40,7 +40,7 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="py-28">
+    <section id="contact" aria-label="Contact section" className="py-28">
       <AnimatedSection>
         <SectionHeader
           title="Contact"
@@ -48,11 +48,12 @@ const Contact = () => {
         />
 
         <Card>
-          <form onSubmit={handleSubmit} className="space-y-4 max-w-xl">
+          <form onSubmit={handleSubmit} aria-label="Contact form" className="space-y-4 max-w-xl">
             <input
               type="text"
               name="name"
               placeholder="Your Name"
+              aria-label="Your name"
               required
               value={form.name}
               onChange={handleChange}
@@ -63,6 +64,7 @@ const Contact = () => {
               type="email"
               name="email"
               placeholder="Your Email"
+              aria-label="Your email"
               required
               value={form.email}
               onChange={handleChange}
@@ -72,6 +74,7 @@ const Contact = () => {
             <textarea
               name="message"
               placeholder="Your Message"
+              aria-label="Your message"
               required
               rows="4"
               value={form.message}

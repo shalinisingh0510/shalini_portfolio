@@ -4,7 +4,7 @@ import Card from "../components/ui/Card"
 
 const About = () => {
   return (
-    <section id="about" className="py-28">
+    <section id="about" aria-label="About section" className="py-28">
       <SectionHeader
         title="About Me"
         subtitle="Not just what I know, but how I think and grow as an engineer."
@@ -12,7 +12,7 @@ const About = () => {
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* Story Card */}
-        <motion.div
+        <motion.article
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -29,10 +29,10 @@ const About = () => {
               projects and open-source collaboration.
             </p>
           </Card>
-        </motion.div>
+        </motion.article>
 
         {/* Highlights Card */}
-        <motion.div
+        <motion.article
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -62,7 +62,7 @@ const About = () => {
               </li>
             </ul>
           </Card>
-        </motion.div>
+        </motion.article>
       </div>
     </section>
   )

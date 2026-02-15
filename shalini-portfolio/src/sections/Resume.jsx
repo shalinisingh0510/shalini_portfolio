@@ -3,7 +3,7 @@ import Button from "../components/common/Button"
 
 const Resume = () => {
   return (
-    <section id="resume" className="py-28">
+    <section id="resume" aria-label="Resume section" className="py-28">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

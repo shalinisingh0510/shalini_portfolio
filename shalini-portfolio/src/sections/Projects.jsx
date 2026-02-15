@@ -7,7 +7,7 @@ import { fadeUp } from "../animations/fade"
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-28">
+    <section id="projects" aria-label="Projects section" className="py-28">
       <SectionHeader
         title="Projects"
         subtitle="Selected work demonstrating engineering thinking, clean architecture, and real-world problem solving."
@@ -21,7 +21,7 @@ const Projects = () => {
         className="grid md:grid-cols-2 gap-8"
       >
         {projects.map((project) => (
-          <motion.div
+          <motion.article
             key={project.title}
             variants={fadeUp}
           >
@@ -80,7 +80,7 @@ const Projects = () => {
                 <span>View on GitHub</span>
               </a>
             </Card>
-          </motion.div>
+          </motion.article>
         ))}
       </motion.div>
     </section>

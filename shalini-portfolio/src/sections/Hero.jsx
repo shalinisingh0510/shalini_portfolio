@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, useMotionValue, useSpring, useReducedMotion } from "framer-motion"
+﻿import { motion, AnimatePresence, useMotionValue, useSpring, useReducedMotion } from "framer-motion"
 import { useEffect, useState } from "react"
 import profile from "../assets/images/profile.jpg"
 import Button from "../components/common/Button"
@@ -43,7 +43,7 @@ const Hero = () => {
   }
 
   return (
-    <section className="min-h-[90vh] flex items-center">
+    <section aria-label="Hero section" className="min-h-[90vh] flex items-center">
       <div className="grid md:grid-cols-2 gap-16 items-center w-full">
         {/* LEFT CONTENT */}
         <motion.div
@@ -100,7 +100,7 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* RIGHT � HERO PORTRAIT PANEL */}
+        {/* RIGHT — HERO PORTRAIT PANEL */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -126,6 +126,9 @@ const Hero = () => {
               <img
                 src={profile}
                 alt="Shalini Kumari"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 className="h-full w-full object-cover object-center scale-105 hover:scale-110 transition duration-700"
               />
 
@@ -143,3 +146,4 @@ const Hero = () => {
 }
 
 export default Hero
+

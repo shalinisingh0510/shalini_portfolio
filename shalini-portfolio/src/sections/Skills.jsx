@@ -10,7 +10,7 @@ import { fadeUp } from "../animations/fade"
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-28">
+    <section id="skills" aria-label="Skills section" className="py-28">
       <SectionHeader
         title="Skills"
         subtitle="A snapshot of my technical strengths, built through practice, projects, and problem-solving."
@@ -18,7 +18,7 @@ const Skills = () => {
 
       <div className="grid md:grid-cols-2 gap-8">
         {skills.map((group) => (
-          <motion.div
+          <motion.article
             key={group.category}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ const Skills = () => {
                 ))}
               </div>
             </Card>
-          </motion.div>
+          </motion.article>
         ))}
       </div>
 
@@ -131,7 +131,7 @@ const Skills = () => {
           className="mt-8 grid md:grid-cols-2 gap-6"
         >
           {openSourceContributions.map((item) => (
-            <motion.div key={item.project} variants={fadeUp}>
+            <motion.article key={item.project} variants={fadeUp}>
               <Card className="h-full">
                 <h3 className="text-lg font-semibold">
                   {item.project}
@@ -171,7 +171,7 @@ const Skills = () => {
                   <span>View Contribution</span>
                 </a>
               </Card>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
       </div>
