@@ -5,6 +5,7 @@ const identityLinks = [
   { label: "LinkedIn", href: siteConfig.person.sameAs[1] },
   { label: "LeetCode", href: siteConfig.person.sameAs[2] },
   { label: "Codeforces", href: siteConfig.person.sameAs[3] },
+  { label: "Instagram", href: siteConfig.person.sameAs[4] },
 ]
 
 const Footer = () => {
