@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import heroImage from "../../assets/images/profile.jpg"
+import heroImage from "../../assets/images/shalini-kumari-alard-university.jpg"
 import { pageMetaByHash, siteConfig } from "../../seo/siteConfig"
 
 const upsertMeta = (attr, key, content) => {
@@ -44,8 +44,9 @@ const SeoHead = ({ currentHash }) => {
     const description = pageMeta.description || siteConfig.description
     const canonicalUrl = `${siteConfig.siteUrl}${currentHash || "/"}`
     const imageUrl = `${siteConfig.siteUrl}${siteConfig.image}`
+    const fullTitle = currentHash ? `${pageTitle} | Shalini Kumari` : siteConfig.defaultTitle
 
-    document.title = `${pageTitle} | Shalini Kumari`
+    document.title = fullTitle
     document.documentElement.lang = "en"
 
     upsertMeta("name", "description", description)
@@ -58,13 +59,13 @@ const SeoHead = ({ currentHash }) => {
 
     upsertMeta("property", "og:type", "website")
     upsertMeta("property", "og:locale", siteConfig.locale)
-    upsertMeta("property", "og:title", `${pageTitle} | Shalini Kumari`)
+    upsertMeta("property", "og:title", fullTitle)
     upsertMeta("property", "og:description", description)
     upsertMeta("property", "og:url", canonicalUrl)
     upsertMeta("property", "og:image", imageUrl)
 
     upsertMeta("property", "twitter:card", "summary_large_image")
-    upsertMeta("property", "twitter:title", `${pageTitle} | Shalini Kumari`)
+    upsertMeta("property", "twitter:title", fullTitle)
     upsertMeta("property", "twitter:description", description)
     upsertMeta("property", "twitter:image", imageUrl)
 

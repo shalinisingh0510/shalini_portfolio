@@ -1,9 +1,9 @@
 export const siteConfig = {
   siteUrl: import.meta.env.VITE_SITE_URL || "https://www.shalinikumari.in",
-  defaultTitle: "Software Developer Portfolio",
+  defaultTitle: "Shalini Kumari | Software Developer | Alard University",
   titleTemplate: "%s | Shalini Kumari",
   description:
-    "Shalini Kumari software developer portfolio focused on DSA, problem solving, and modern web development.",
+    "Shalini Kumari, Software Developer from Alard University. Explore projects, DSA skills, and web development work.",
   keywords: [
     "Shalini Kumari",
     "Shalini Kumari Alard",
@@ -12,6 +12,7 @@ export const siteConfig = {
     "Shalini Developer",
     "Shalini DSA",
     "Shalini Kumari portfolio",
+    "Shalini Kumari Alard University",
     "React developer portfolio",
     "Software developer portfolio",
   ],
@@ -33,13 +34,13 @@ export const siteConfig = {
     description:
       "Software developer specializing in DSA and web development.",
     sameAs: [
-      "https://github.com/your-username",
-      "https://www.linkedin.com/in/your-profile",
-      "https://leetcode.com/u/your-username",
-      "https://codeforces.com/profile/your-handle",
-      "https://www.instagram.com/your-handle/",
+      "https://github.com/shalinisingh0510",
+      "https://www.linkedin.com/in/shalini-kumari-61190830a/",
+      "https://leetcode.com/u/Shalu_codeThrust/",
+      "https://codeforces.com/profile/Shalu_codethrust",
+      "https://www.instagram.com/shalinishareyasingh/",
     ],
-    alumniOf: "Your College Name",
+    alumniOf: "Alard University",
     knowsAbout: ["Data Structures", "Algorithms", "React", "Node.js", "Problem Solving"],
     nationality: "Indian",
     gender: "Female",

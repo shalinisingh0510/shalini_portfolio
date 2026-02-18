@@ -1,13 +1,13 @@
 ﻿import { motion, AnimatePresence, useMotionValue, useSpring, useReducedMotion } from "framer-motion"
 import { useEffect, useState } from "react"
-import profile from "../assets/images/profile.jpg"
+import profile from "../assets/images/shalini-kumari-alard-university.jpg"
 import Button from "../components/common/Button"
 import FloatingTech from "../components/common/FloatingTech"
 
 const roles = [
-  "Software Engineer",
   "Open Source Contributor",
   "DSA & Problem Solving",
+  "React & Node.js Developer",
 ]
 
 const Hero = () => {
@@ -61,19 +61,23 @@ const Hero = () => {
             <span className="text-gradient">Shalini Kumari</span>
           </h1>
 
+          <h2 className="mt-4 text-xl md:text-2xl text-muted">
+            Software Developer | Alard University
+          </h2>
+
           {/* Animated Role */}
-          <div className="relative h-10 mt-4 overflow-hidden">
+          <div className="relative h-8 mt-2 overflow-hidden">
             <AnimatePresence mode="wait">
-              <motion.h2
+              <motion.p
                 key={roles[index]}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="absolute text-xl md:text-2xl text-muted"
+                className="absolute text-sm md:text-base text-muted"
               >
                 {roles[index]}
-              </motion.h2>
+              </motion.p>
             </AnimatePresence>
           </div>
 
@@ -86,8 +90,9 @@ const Hero = () => {
           />
 
           <p className="mt-6 text-muted text-body max-w-xl">
-            I build scalable web applications with a strong foundation in
-            data structures, clean architecture, and real-world engineering.
+            Shalini Kumari is a Software Developer from Alard University building
+            scalable web applications with strong foundations in data structures,
+            clean architecture, and real-world engineering.
           </p>
 
           <div className="mt-8 flex gap-4">
@@ -125,7 +130,7 @@ const Hero = () => {
             >
               <img
                 src={profile}
-                alt="Shalini Kumari"
+                alt="Shalini Kumari Alard University Software Developer"
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
