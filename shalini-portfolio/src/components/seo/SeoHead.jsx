@@ -1,42 +1,78 @@
-import { Helmet } from "react-helmet-async"
+import { useEffect } from "react"
 import heroImage from "../../assets/images/profile.jpg"
 import { pageMetaByHash, siteConfig } from "../../seo/siteConfig"
 
-const SeoHead = ({ currentHash }) => {
-  const pageMeta = pageMetaByHash[currentHash] || {}
-  const pageTitle = pageMeta.title || siteConfig.defaultTitle
-  const description = pageMeta.description || siteConfig.description
-  const canonicalUrl = `${siteConfig.siteUrl}${currentHash || "/"}`
-  const imageUrl = `${siteConfig.siteUrl}${siteConfig.image}`
+const upsertMeta = (attr, key, content) => {
+  let el = document.head.querySelector(`meta[${attr}="${key}"]`)
+  if (!el) {
+    el = document.createElement("meta")
+    el.setAttribute(attr, key)
+    el.setAttribute("data-seo-managed", "true")
+    document.head.appendChild(el)
+  }
+  el.setAttribute("content", content)
+}
 
-  return (
-    <Helmet
-      title={pageTitle}
-      titleTemplate={siteConfig.titleTemplate}
-      prioritizeSeoTags
-    >
-      <html lang="en" />
-      <meta name="description" content={description} />
-      <meta name="keywords" content={siteConfig.keywords.join(", ")} />
-      <meta name="author" content={siteConfig.author} />
-      <meta name="robots" content="index, follow, max-image-preview:large" />
-      <meta name="googlebot" content="index, follow, max-image-preview:large" />
-      <meta name="language" content="English" />
-      <meta name="theme-color" content={siteConfig.themeColor} />
-      <meta property="og:type" content="website" />
-      <meta property="og:locale" content={siteConfig.locale} />
-      <meta property="og:title" content={pageTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:image" content={imageUrl} />
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:title" content={pageTitle} />
-      <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={imageUrl} />
-      <link rel="canonical" href={canonicalUrl} />
-      <link rel="preload" as="image" href={heroImage} fetchPriority="high" />
-    </Helmet>
-  )
+const upsertCanonical = (href) => {
+  let el = document.head.querySelector('link[rel="canonical"]')
+  if (!el) {
+    el = document.createElement("link")
+    el.setAttribute("rel", "canonical")
+    el.setAttribute("data-seo-managed", "true")
+    document.head.appendChild(el)
+  }
+  el.setAttribute("href", href)
+}
+
+const upsertPreloadImage = (href) => {
+  let el = document.head.querySelector('link[rel="preload"][as="image"][data-seo-hero="true"]')
+  if (!el) {
+    el = document.createElement("link")
+    el.setAttribute("rel", "preload")
+    el.setAttribute("as", "image")
+    el.setAttribute("data-seo-hero", "true")
+    el.setAttribute("data-seo-managed", "true")
+    document.head.appendChild(el)
+  }
+  el.setAttribute("href", href)
+}
+
+const SeoHead = ({ currentHash }) => {
+  useEffect(() => {
+    const pageMeta = pageMetaByHash[currentHash] || {}
+    const pageTitle = pageMeta.title || siteConfig.defaultTitle
+    const description = pageMeta.description || siteConfig.description
+    const canonicalUrl = `${siteConfig.siteUrl}${currentHash || "/"}`
+    const imageUrl = `${siteConfig.siteUrl}${siteConfig.image}`
+
+    document.title = `${pageTitle} | Shalini Kumari`
+    document.documentElement.lang = "en"
+
+    upsertMeta("name", "description", description)
+    upsertMeta("name", "keywords", siteConfig.keywords.join(", "))
+    upsertMeta("name", "author", siteConfig.author)
+    upsertMeta("name", "robots", "index, follow, max-image-preview:large")
+    upsertMeta("name", "googlebot", "index, follow, max-image-preview:large")
+    upsertMeta("name", "language", "English")
+    upsertMeta("name", "theme-color", siteConfig.themeColor)
+
+    upsertMeta("property", "og:type", "website")
+    upsertMeta("property", "og:locale", siteConfig.locale)
+    upsertMeta("property", "og:title", `${pageTitle} | Shalini Kumari`)
+    upsertMeta("property", "og:description", description)
+    upsertMeta("property", "og:url", canonicalUrl)
+    upsertMeta("property", "og:image", imageUrl)
+
+    upsertMeta("property", "twitter:card", "summary_large_image")
+    upsertMeta("property", "twitter:title", `${pageTitle} | Shalini Kumari`)
+    upsertMeta("property", "twitter:description", description)
+    upsertMeta("property", "twitter:image", imageUrl)
+
+    upsertCanonical(canonicalUrl)
+    upsertPreloadImage(heroImage)
+  }, [currentHash])
+
+  return null
 }
 
 export default SeoHead
