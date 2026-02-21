@@ -3,7 +3,6 @@ import SectionHeader from "../components/common/SectionHeader"
 import Card from "../components/ui/Card"
 import AnimatedSection from "../components/common/AnimatedSection"
 import Button from "../components/common/Button"
-import { supabase } from "../services/supabaseClient"
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -15,6 +14,7 @@ const Contact = () => {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(null)
+  const [website, setWebsite] = useState("")
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -24,16 +24,34 @@ const Contact = () => {
     e.preventDefault()
     setLoading(true)
     setError(null)
+    setSuccess(false)
 
-    const { error } = await supabase
-      .from("contact_messages")
-      .insert([form])
+    const payload = {
+      name: form.name.trim(),
+      email: form.email.trim().toLowerCase(),
+      message: form.message.trim(),
+      website,
+    }
 
-    if (error) {
-      setError("Something went wrong. Please try again.")
-    } else {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      })
+
+      const data = await response.json()
+      if (!response.ok) {
+        throw new Error(data?.error || "Something went wrong. Please try again.")
+      }
+
       setSuccess(true)
+      setWebsite("")
       setForm({ name: "", email: "", message: "" })
+    } catch (requestError) {
+      setError(requestError?.message || "Something went wrong. Please try again.")
     }
 
     setLoading(false)
@@ -80,6 +98,17 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               className="w-full px-4 py-3 rounded-xl bg-card/70 border border-border/70 focus:outline-none focus:ring-2 focus:ring-ring/40 transition"
+            />
+
+            <input
+              type="text"
+              name="website"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
             />
 
             <Button type="submit" disabled={loading} className="disabled:opacity-60">
