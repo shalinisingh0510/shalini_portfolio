@@ -8,13 +8,16 @@ import Hero from "./sections/Hero"
 const About = lazy(() => import("./sections/About"))
 const Skills = lazy(() => import("./sections/Skills"))
 const Projects = lazy(() => import("./sections/Projects"))
+const Blog = lazy(() => import("./sections/Blog"))
 const Contact = lazy(() => import("./sections/Contact"))
 const Resume = lazy(() => import("./sections/Resume"))
+const BlogPost = lazy(() => import("./pages/BlogPost"))
 
 const sectionByPath = {
   "/about": "about",
   "/skills": "skills",
   "/projects": "projects",
+  "/blog": "blog",
   "/resume": "resume",
   "/contact": "contact",
 }
@@ -65,6 +68,30 @@ function App() {
     if (target) target.scrollIntoView({ block: "start", behavior: "auto" })
   }, [])
 
+  // Check if we're on a blog post page
+  const blogSlugMatch = currentPath.match(/^\/blog\/(.+)$/)
+  const isBlogPost = !!blogSlugMatch
+
+  if (isBlogPost) {
+    return (
+      <div className="relative min-h-screen w-full">
+        <SeoHead currentPath={currentPath} />
+        <AuroraBackground />
+        <Navbar />
+        <main id="main-content" aria-label="Blog post" className="relative z-10 max-w-6xl mx-auto px-6 pt-24 pb-24 page-3d">
+          <Suspense fallback={
+            <div className="flex items-center justify-center py-32">
+              <div className="h-8 w-8 rounded-full border-2 border-accent/30 border-t-accent animate-spin" />
+            </div>
+          }>
+            <BlogPost slug={blogSlugMatch[1]} />
+          </Suspense>
+        </main>
+        <Footer />
+      </div>
+    )
+  }
+
   return (
     <div className="relative min-h-screen w-full">
       <SeoHead currentPath={currentPath} />
@@ -83,6 +110,7 @@ function App() {
           <Resume />
           <Skills />
           <Projects />
+          <Blog />
         </Suspense>
 
         {/* Subtle divider */}

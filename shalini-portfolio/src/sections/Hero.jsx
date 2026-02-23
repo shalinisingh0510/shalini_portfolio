@@ -1,6 +1,7 @@
 ﻿import { motion, AnimatePresence, useMotionValue, useSpring, useReducedMotion } from "framer-motion"
 import { useEffect, useState } from "react"
-import profile from "../assets/images/shalini-kumari-alard-university.jpg"
+import profileFront from "../assets/images/shalini-kumari-alard-university.jpg"
+import profileBack from "../assets/images/1.jpg"
 import Button from "../components/common/Button"
 import FloatingTech from "../components/common/FloatingTech"
 
@@ -53,7 +54,7 @@ const Hero = () => {
         >
           <div className="inline-flex items-center gap-3 rounded-full border border-border/70 bg-card/60 px-4 py-2 backdrop-blur shadow-soft">
             <span className="text-xs uppercase tracking-[0.35em] text-muted">Hello</span>
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
             <span className="text-xs font-semibold text-foreground/80">I'm</span>
           </div>
 
@@ -74,7 +75,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="absolute text-sm md:text-base text-muted"
+                className="absolute text-sm md:text-base text-accent font-medium"
               >
                 {roles[index]}
               </motion.p>
@@ -116,7 +117,7 @@ const Hero = () => {
           {/* Background glow */}
           <div className="absolute -inset-10 bg-gradient-to-br from-accent/25 via-highlight/20 to-transparent blur-3xl rounded-3xl" />
 
-          {/* Portrait panel */}
+          {/* Portrait panel with 3D flip */}
           <motion.div
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -126,20 +127,38 @@ const Hero = () => {
             <motion.div
               animate={reduceMotion ? {} : { y: [0, -8, 0] }}
               transition={reduceMotion ? {} : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative h-full w-full overflow-hidden rounded-full border border-border/70 shadow-2xl"
+              className="relative h-full w-full profile-flipper"
             >
-              <img
-                src={profile}
-                alt="Shalini Kumari Alard University Software Developer"
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                className="h-full w-full object-cover object-center scale-105 hover:scale-110 transition duration-700"
-              />
+              <div className="profile-flipper__inner">
+                {/* Front Face */}
+                <div className="profile-flipper__face">
+                  <img
+                    src={profileFront}
+                    alt="Shalini Kumari Alard University Software Developer"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    className="h-full w-full object-cover object-center scale-105"
+                  />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                </div>
 
-              <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                {/* Back Face */}
+                <div className="profile-flipper__face profile-flipper__face--back">
+                  <img
+                    src={profileBack}
+                    alt="Shalini Kumari - Another angle"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover object-center scale-105"
+                  />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                </div>
+              </div>
 
-              <div className="pointer-events-none absolute -inset-2 rounded-full border border-border/50" />
+              {/* Animated ring */}
+              <div className="pointer-events-none absolute -inset-2 rounded-full border border-accent/30 animate-pulse" />
+              <div className="pointer-events-none absolute -inset-4 rounded-full border border-highlight/15" />
             </motion.div>
 
             <div className="absolute -bottom-6 left-1/2 h-10 w-40 -translate-x-1/2 rounded-full bg-black/30 blur-2xl" />
@@ -151,4 +170,3 @@ const Hero = () => {
 }
 
 export default Hero
-

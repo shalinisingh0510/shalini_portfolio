@@ -22,6 +22,9 @@ const Navbar = () => {
               <a className="nav-link hover:text-foreground transition" href="/projects" aria-label="Go to Projects section">Projects</a>
             </li>
             <li>
+              <a className="nav-link hover:text-foreground transition" href="/blog" aria-label="Go to Blog section">Blog</a>
+            </li>
+            <li>
               <a className="nav-link hover:text-foreground transition" href="/resume" aria-label="Go to Resume section">Resume</a>
             </li>
             <li>
