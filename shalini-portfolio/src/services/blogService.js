@@ -178,3 +178,28 @@ function getFingerprint() {
     }
     return "fp_" + Math.abs(hash).toString(36)
 }
+
+/**
+ * Subscribe to the blog newsletter
+ */
+export async function subscribeToNewsletter(email) {
+    const safeEmail = String(email || "").trim().toLowerCase()
+    if (!safeEmail || !safeEmail.includes("@")) {
+        return { success: false, error: "Invalid email address" }
+    }
+
+    const { error } = await supabase
+        .from("blog_subscribers")
+        .insert([{ email: safeEmail }])
+
+    if (error) {
+        // Check for unique constraint violation (code 23505)
+        if (error.code === "23505") {
+            return { success: false, error: "This email is already subscribed!" }
+        }
+        console.error("Error subscribing:", error)
+        return { success: false, error: "Failed to subscribe. Please try again." }
+    }
+
+    return { success: true }
+}

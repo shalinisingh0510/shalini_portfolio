@@ -123,17 +123,6 @@ export default async function handler(req, res) {
       // Intentionally ignored so sender mail issues do not fail contact submission.
     }
 
-    const supabaseAdmin = getSupabaseAdminClient()
-    if (supabaseAdmin) {
-      await supabaseAdmin.from("contact_messages").insert([
-        {
-          name: safeName,
-          email: safeEmail,
-          message: safeMessage,
-        },
-      ])
-    }
-
     return res.status(200).json({ ok: true })
   } catch (error) {
     return res.status(500).json({

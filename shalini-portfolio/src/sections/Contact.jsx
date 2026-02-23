@@ -34,17 +34,37 @@ const Contact = () => {
     }
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      })
+      // Honeypot check
+      if (website) {
+        setSuccess(true)
+        setLoading(false)
+        return
+      }
 
-      const data = await response.json()
-      if (!response.ok) {
-        throw new Error(data?.error || "Something went wrong. Please try again.")
+      // 1. Save directly to Supabase first (Guarantee we never lose the message)
+      const { supabase } = await import("../services/supabaseClient")
+      const { error: dbError } = await supabase
+        .from("contact_messages")
+        .insert([{
+          name: payload.name,
+          email: payload.email,
+          message: payload.message
+        }])
+
+      if (dbError) {
+        console.error("Supabase insert error:", dbError)
+        throw new Error("Could not save your message. Please try again.")
+      }
+
+      // 2. Try to send the email notification (Best effort, non-blocking if it fails)
+      try {
+        await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        })
+      } catch (emailError) {
+        console.warn("Email notification failed, but message was saved:", emailError)
       }
 
       setSuccess(true)

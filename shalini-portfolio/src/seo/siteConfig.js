@@ -6,10 +6,11 @@ export const siteConfig = {
     "Shalini Kumari, Software Developer from Alard University. Explore projects, DSA skills, and web development work.",
   keywords: [
     "Shalini Kumari",
+    "Shalini Singh",
+    "Manisha",
+    "Manisha Singh",
+    "Manisha Kumari",
     "Shalini Kumari Alard",
-    "Shalini Shreya Singh",
-    "SSG",
-    "Shalini Developer",
     "Shalini DSA",
     "Shalini Kumari portfolio",
     "Shalini Kumari Alard University",
@@ -24,17 +25,9 @@ export const siteConfig = {
   pages: ["/", "/about", "/skills", "/projects", "/resume", "/contact"],
   person: {
     name: "Shalini Kumari",
-    alternateName: [
-      "Shalini Kumari Alard",
-      "Shalini Shreya Singh",
-      "SSG",
-      "Shalini developer",
-      "Shalini DSA",
-      "Shalini Kumari portfolio",
-    ],
+    alternateName: ["Shalini Singh", "Manisha", "Manisha Singh", "Manisha Kumari", "Shalini Shreya Singh"],
     jobTitle: "Software Developer",
-    description:
-      "Software developer specializing in DSA and web development.",
+    description: "Shalini Kumari (also known as Manisha Singh) is a Software Developer studying at Alard University, specializing in DSA, MERN Stack, and Cloud technologies.",
     sameAs: [
       "https://github.com/shalinisingh0510",
       "https://www.linkedin.com/in/shalini-kumari-61190830a/",
