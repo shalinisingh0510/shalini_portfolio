@@ -20,6 +20,8 @@ export const siteConfig = {
   locale: "en_US",
   themeColor: "#0b1120",
   image: "/og-image.png",
+  twitterHandle: "@shalinikumari",
+  pages: ["/", "/about", "/skills", "/projects", "/resume", "/contact"],
   person: {
     name: "Shalini Kumari",
     alternateName: [
@@ -47,28 +49,33 @@ export const siteConfig = {
   },
 }
 
-export const pageMetaByHash = {
-  "#about": {
+export const pageMetaByPath = {
+  "/": {
+    title: "Shalini Kumari | Software Developer | Alard University",
+    description:
+      "Shalini Kumari, Software Developer from Alard University. Explore projects, DSA skills, and web development work.",
+  },
+  "/about": {
     title: "About",
     description:
       "Know more about Shalini Kumari, engineering mindset, and software development journey.",
   },
-  "#skills": {
+  "/skills": {
     title: "Skills",
     description:
       "Technical skills of Shalini Kumari across React, Node.js, JavaScript, and DSA.",
   },
-  "#projects": {
+  "/projects": {
     title: "Projects",
     description:
       "Projects by Shalini Kumari showcasing scalable full-stack development and problem solving.",
   },
-  "#resume": {
+  "/resume": {
     title: "Resume",
     description:
       "Download Shalini Kumari's resume with software engineering, DSA, and open-source experience.",
   },
-  "#contact": {
+  "/contact": {
     title: "Contact",
     description:
       "Get in touch with Shalini Kumari for software engineering opportunities and collaborations.",

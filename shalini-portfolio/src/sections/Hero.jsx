@@ -96,10 +96,10 @@ const Hero = () => {
           </p>
 
           <div className="mt-8 flex gap-4">
-            <Button as="a" href="#projects">
+            <Button as="a" href="/projects">
               View Projects
             </Button>
-            <Button as="a" href="#contact" variant="outline">
+            <Button as="a" href="/contact" variant="outline">
               Contact Me
             </Button>
           </div>

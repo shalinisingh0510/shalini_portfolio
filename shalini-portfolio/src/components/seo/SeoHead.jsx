@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import heroImage from "../../assets/images/shalini-kumari-alard-university.jpg"
-import { pageMetaByHash, siteConfig } from "../../seo/siteConfig"
+import { pageMetaByPath, siteConfig } from "../../seo/siteConfig"
 
 const upsertMeta = (attr, key, content) => {
   let el = document.head.querySelector(`meta[${attr}="${key}"]`)
@@ -24,6 +24,23 @@ const upsertCanonical = (href) => {
   el.setAttribute("href", href)
 }
 
+const upsertJsonLd = (id, payload) => {
+  let el = document.head.querySelector(`script[data-seo-jsonld="${id}"]`)
+  if (!el) {
+    el = document.createElement("script")
+    el.setAttribute("type", "application/ld+json")
+    el.setAttribute("data-seo-jsonld", id)
+    el.setAttribute("data-seo-managed", "true")
+    document.head.appendChild(el)
+  }
+  el.textContent = JSON.stringify(payload)
+}
+
+const normalizePath = (path) => {
+  if (!path || path === "/") return "/"
+  return path.endsWith("/") ? path.slice(0, -1) : path
+}
+
 const upsertPreloadImage = (href) => {
   let el = document.head.querySelector('link[rel="preload"][as="image"][data-seo-hero="true"]')
   if (!el) {
@@ -37,14 +54,15 @@ const upsertPreloadImage = (href) => {
   el.setAttribute("href", href)
 }
 
-const SeoHead = ({ currentHash }) => {
+const SeoHead = ({ currentPath }) => {
   useEffect(() => {
-    const pageMeta = pageMetaByHash[currentHash] || {}
-    const pageTitle = pageMeta.title || siteConfig.defaultTitle
+    const normalizedPath = normalizePath(currentPath)
+    const pageMeta = pageMetaByPath[normalizedPath] || pageMetaByPath["/"]
+    const pageTitle = pageMeta.title || pageMetaByPath["/"].title
     const description = pageMeta.description || siteConfig.description
-    const canonicalUrl = `${siteConfig.siteUrl}${currentHash || "/"}`
+    const canonicalUrl = normalizedPath === "/" ? `${siteConfig.siteUrl}/` : `${siteConfig.siteUrl}${normalizedPath}`
     const imageUrl = `${siteConfig.siteUrl}${siteConfig.image}`
-    const fullTitle = currentHash ? `${pageTitle} | Shalini Kumari` : siteConfig.defaultTitle
+    const fullTitle = normalizedPath === "/" ? pageMetaByPath["/"].title : `${pageTitle} | Shalini Kumari`
 
     document.title = fullTitle
     document.documentElement.lang = "en"
@@ -64,14 +82,46 @@ const SeoHead = ({ currentHash }) => {
     upsertMeta("property", "og:url", canonicalUrl)
     upsertMeta("property", "og:image", imageUrl)
 
-    upsertMeta("property", "twitter:card", "summary_large_image")
-    upsertMeta("property", "twitter:title", fullTitle)
-    upsertMeta("property", "twitter:description", description)
-    upsertMeta("property", "twitter:image", imageUrl)
+    upsertMeta("name", "twitter:card", "summary_large_image")
+    upsertMeta("name", "twitter:title", fullTitle)
+    upsertMeta("name", "twitter:description", description)
+    upsertMeta("name", "twitter:image", imageUrl)
+    upsertMeta("name", "twitter:site", siteConfig.twitterHandle)
 
     upsertCanonical(canonicalUrl)
     upsertPreloadImage(heroImage)
-  }, [currentHash])
+
+    upsertJsonLd("website", {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Shalini Kumari Portfolio",
+      url: `${siteConfig.siteUrl}/`,
+      inLanguage: "en",
+      publisher: {
+        "@type": "Person",
+        name: siteConfig.person.name,
+      },
+    })
+
+    upsertJsonLd("person", {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: siteConfig.person.name,
+      alternateName: siteConfig.person.alternateName,
+      jobTitle: siteConfig.person.jobTitle,
+      description: siteConfig.person.description,
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: siteConfig.person.alumniOf,
+      },
+      knowsAbout: siteConfig.person.knowsAbout,
+      nationality: siteConfig.person.nationality,
+      gender: siteConfig.person.gender,
+      sameAs: siteConfig.person.sameAs,
+      url: `${siteConfig.siteUrl}/`,
+      image: `${siteConfig.siteUrl}/shalini-kumari-alard-university.jpg`,
+    })
+  }, [currentPath])
 
   return null
 }

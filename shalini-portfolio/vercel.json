@@ -1,0 +1,44 @@
+{
+  "redirects": [
+    {
+      "source": "http://shalinikumari.in/:path*",
+      "destination": "https://www.shalinikumari.in/:path*",
+      "permanent": true
+    },
+    {
+      "source": "https://shalinikumari.in/:path*",
+      "destination": "https://www.shalinikumari.in/:path*",
+      "permanent": true
+    },
+    {
+      "source": "http://www.shalinikumari.in/:path*",
+      "destination": "https://www.shalinikumari.in/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/about/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/skills/",
+      "destination": "/skills",
+      "permanent": true
+    },
+    {
+      "source": "/projects/",
+      "destination": "/projects",
+      "permanent": true
+    },
+    {
+      "source": "/resume/",
+      "destination": "/resume",
+      "permanent": true
+    },
+    {
+      "source": "/contact/",
+      "destination": "/contact",
+      "permanent": true
+    }
+  ]
+}
