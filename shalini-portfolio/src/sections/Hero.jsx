@@ -140,7 +140,7 @@ const Hero = () => {
               transition={reduceMotion ? {} : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="relative h-full w-full profile-flipper rounded-full z-10"
             >
-              <div className="profile-flipper__inner rounded-full overflow-hidden">
+              <div className="profile-flipper__inner rounded-full">
                 {/* Front Face */}
                 <div className="profile-flipper__face rounded-full overflow-hidden flex items-center justify-center">
                   <img

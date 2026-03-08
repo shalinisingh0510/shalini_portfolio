@@ -14,18 +14,18 @@ const SnowEffect = ({ isActive }) => {
         // Generate snowflakes with random properties
         const generateSnowflakes = () => {
             const flakes = []
-            const particleCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 60 : 150
+            const particleCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 50 : 120
 
             for (let i = 0; i < particleCount; i++) {
                 flakes.push({
                     id: i,
                     x: Math.random() * 100, // vw
                     y: Math.random() * -100, // Start above screen
-                    size: Math.random() * 0.25 + 0.1, // vw/vh relative (much smaller)
-                    animationDuration: Math.random() * 15 + 15, // 15s-30s fall time (slower, gentler)
-                    animationDelay: Math.random() * -30, // Negative delay to start mid-animation
-                    opacity: Math.random() * 0.4 + 0.1, // softer opacity
-                    wobble: Math.random() * 15 - 7.5, // horizontal drift
+                    size: Math.random() * 0.4 + 0.25, // vw/vh relative (larger and varied)
+                    animationDuration: Math.random() * 8 + 8, // 8s-16s fall time
+                    animationDelay: Math.random() * -20, // Negative delay to start mid-animation
+                    opacity: Math.random() * 0.7 + 0.3, // much more visible
+                    wobble: Math.random() * 20 - 10, // horizontal drift
                 })
             }
             setSnowflakes(flakes)
@@ -76,11 +76,12 @@ const SnowEffect = ({ isActive }) => {
           }
           /* Subtly tint snow based on theme using standard variables */
           .dark .snowflake {
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
           }
           :not(.dark) .snowflake {
-            background: rgba(100, 116, 139, 0.3); /* muted generic snow for light mode */
+            background: rgba(148, 163, 184, 0.6); 
+            box-shadow: 0 0 4px rgba(148, 163, 184, 0.4);
             filter: blur(0px);
           }
         `}
