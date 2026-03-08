@@ -1,7 +1,7 @@
 ﻿import { motion, AnimatePresence, useMotionValue, useSpring, useReducedMotion } from "framer-motion"
 import { useEffect, useState } from "react"
 import profileFront from "../assets/images/shalini-kumari-alard-university.jpg"
-import profileBack from "../assets/images/1.jpg"
+import profileBack from "../assets/images/shalini-boat.jpg"
 import Button from "../components/common/Button"
 import FloatingTech from "../components/common/FloatingTech"
 

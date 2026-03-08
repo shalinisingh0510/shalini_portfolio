@@ -14,18 +14,18 @@ const SnowEffect = ({ isActive }) => {
         // Generate snowflakes with random properties
         const generateSnowflakes = () => {
             const flakes = []
-            const particleCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 40 : 100
+            const particleCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 60 : 150
 
             for (let i = 0; i < particleCount; i++) {
                 flakes.push({
                     id: i,
                     x: Math.random() * 100, // vw
                     y: Math.random() * -100, // Start above screen
-                    size: Math.random() * 0.8 + 0.2, // vw/vh relative
-                    animationDuration: Math.random() * 10 + 10, // 10s-20s fall time
-                    animationDelay: Math.random() * -20, // Negative delay to start mid-animation
-                    opacity: Math.random() * 0.5 + 0.2,
-                    wobble: Math.random() * 20 - 10, // horizontal drift
+                    size: Math.random() * 0.25 + 0.1, // vw/vh relative (much smaller)
+                    animationDuration: Math.random() * 15 + 15, // 15s-30s fall time (slower, gentler)
+                    animationDelay: Math.random() * -30, // Negative delay to start mid-animation
+                    opacity: Math.random() * 0.4 + 0.1, // softer opacity
+                    wobble: Math.random() * 15 - 7.5, // horizontal drift
                 })
             }
             setSnowflakes(flakes)
