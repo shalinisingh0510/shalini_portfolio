@@ -8,21 +8,6 @@
   ],
   "redirects": [
     {
-      "source": "http://shalinikumari.in/:path*",
-      "destination": "https://www.shalinikumari.in/:path*",
-      "permanent": true
-    },
-    {
-      "source": "https://shalinikumari.in/:path*",
-      "destination": "https://www.shalinikumari.in/:path*",
-      "permanent": true
-    },
-    {
-      "source": "http://www.shalinikumari.in/:path*",
-      "destination": "https://www.shalinikumari.in/:path*",
-      "permanent": true
-    },
-    {
       "source": "/about/",
       "destination": "/about",
       "permanent": true
