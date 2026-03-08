@@ -1,9 +1,15 @@
 import { mkdirSync, writeFileSync } from "node:fs"
 import { resolve } from "node:path"
 import { createClient } from "@supabase/supabase-js"
-import dotenv from "dotenv"
 
-dotenv.config()
+// On Vercel, env vars are injected natively — no dotenv needed.
+// For local dev, load .env only if available (optional dependency).
+try {
+  const dotenv = await import("dotenv")
+  dotenv.config({ quiet: true })
+} catch {
+  // dotenv not installed or not available — that's fine on Vercel
+}
 
 const siteUrl = (process.env.VITE_SITE_URL || "https://www.shalinikumari.in").replace(/\/$/, "")
 const baseRoutes = ["/", "/about", "/skills", "/projects", "/resume", "/contact", "/blog"]
@@ -17,21 +23,25 @@ async function generateSeoFiles() {
 
   if (supabaseUrl && supabaseKey) {
     console.log("Fetching blog posts for sitemap...")
-    const supabase = createClient(supabaseUrl, supabaseKey)
-    const { data: posts, error } = await supabase
-      .from("blog_posts")
-      .select("slug")
-      .eq("is_published", true)
+    try {
+      const supabase = createClient(supabaseUrl, supabaseKey)
+      const { data: posts, error } = await supabase
+        .from("blog_posts")
+        .select("slug")
+        .eq("is_published", true)
 
-    if (!error && posts) {
-      const blogRoutes = posts.map((post) => `/blog/${post.slug}`)
-      routes = [...routes, ...blogRoutes]
-      console.log(`Added ${blogRoutes.length} blog posts to sitemap.`)
-    } else {
-      console.warn("Failed to fetch blog posts for sitemap:", error)
+      if (!error && posts) {
+        const blogRoutes = posts.map((post) => `/blog/${post.slug}`)
+        routes = [...routes, ...blogRoutes]
+        console.log(`Added ${blogRoutes.length} blog posts to sitemap.`)
+      } else {
+        console.log("Could not fetch blog posts for sitemap (non-fatal):", error?.message || "unknown")
+      }
+    } catch (fetchErr) {
+      console.log("Supabase fetch skipped (non-fatal):", fetchErr?.message || "unknown")
     }
   } else {
-    console.warn("Supabase credentials missing. Blog posts will not be in sitemap.")
+    console.log("Supabase credentials not found. Blog posts will not be in sitemap.")
   }
 
   const toAbsoluteUrl = (route) => (route === "/" ? `${siteUrl}/` : `${siteUrl}${route}`)
@@ -67,4 +77,7 @@ Sitemap: ${siteUrl}/sitemap.xml
   console.log("Generated public/sitemap.xml and public/robots.txt")
 }
 
-generateSeoFiles().catch(console.error)
+generateSeoFiles().catch((err) => {
+  console.log("SEO file generation encountered an error (non-fatal):", err?.message || err)
+  // Do NOT exit with error code — allow build to continue
+})
