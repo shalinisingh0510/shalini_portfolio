@@ -115,53 +115,64 @@ const Hero = () => {
         >
           <FloatingTech />
           {/* Background glow */}
-          <div className="absolute -inset-10 bg-gradient-to-br from-accent/25 via-highlight/20 to-transparent blur-3xl rounded-3xl" />
+          <div className="absolute -inset-10 bg-gradient-to-br from-accent/25 via-highlight/20 to-transparent blur-3xl rounded-full" />
 
-          {/* Portrait panel with 3D flip */}
+          {/* Portrait panel with 3D flip and Spinning Ring */}
           <motion.div
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{ rotateX, rotateY }}
-            className="relative z-10 w-[260px] md:w-[320px] aspect-square"
+            className="relative z-10 w-[260px] md:w-[320px] aspect-square rounded-full flex items-center justify-center p-2"
           >
+            {/* Spinning Gradient Ring */}
+            <motion.div
+              className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent via-highlight to-transparent opacity-80"
+              animate={reduceMotion ? {} : { rotate: 360 }}
+              transition={reduceMotion ? {} : { duration: 10, repeat: Infinity, ease: "linear" }}
+              style={{ padding: '3px' }} // Thickness of the ring
+            >
+              {/* Inner cutout to form the ring */}
+              <div className="w-full h-full bg-background rounded-full" />
+            </motion.div>
+
             <motion.div
               animate={reduceMotion ? {} : { y: [0, -8, 0] }}
               transition={reduceMotion ? {} : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative h-full w-full profile-flipper"
+              className="relative h-full w-full profile-flipper rounded-full z-10"
             >
-              <div className="profile-flipper__inner">
+              <div className="profile-flipper__inner rounded-full overflow-hidden">
                 {/* Front Face */}
-                <div className="profile-flipper__face">
+                <div className="profile-flipper__face rounded-full overflow-hidden flex items-center justify-center">
                   <img
                     src={profileFront}
                     alt="Shalini Kumari Alard University Software Developer"
                     loading="eager"
                     fetchPriority="high"
                     decoding="async"
-                    className="h-full w-full object-cover object-center scale-105"
+                    className="h-full w-full object-cover object-center"
                   />
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 rounded-full shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] pointer-events-none" />
                 </div>
 
                 {/* Back Face */}
-                <div className="profile-flipper__face profile-flipper__face--back">
+                <div className="profile-flipper__face profile-flipper__face--back rounded-full overflow-hidden flex items-center justify-center">
                   <img
                     src={profileBack}
                     alt="Shalini Kumari - Another angle"
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-cover object-center scale-105"
+                    className="h-full w-full object-cover object-center"
                   />
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 rounded-full shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] pointer-events-none" />
                 </div>
               </div>
 
-              {/* Animated ring */}
-              <div className="pointer-events-none absolute -inset-2 rounded-full border border-accent/30 animate-pulse" />
-              <div className="pointer-events-none absolute -inset-4 rounded-full border border-highlight/15" />
+              {/* Animated outer pulse rings */}
+              <div className="pointer-events-none absolute -inset-4 rounded-full border border-accent/40 animate-pulse" />
+              <div className="pointer-events-none absolute -inset-8 rounded-full border border-highlight/20" />
             </motion.div>
 
-            <div className="absolute -bottom-6 left-1/2 h-10 w-40 -translate-x-1/2 rounded-full bg-black/30 blur-2xl" />
+            <div className="absolute -bottom-8 left-1/2 h-8 w-40 -translate-x-1/2 rounded-full bg-black/40 blur-xl" />
           </motion.div>
         </motion.div>
       </div>
