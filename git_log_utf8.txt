@@ -1,0 +1,10 @@
+﻿82e7315 improving seo
+f5ba076 adding blog
+e11a876 fixing seo
+eba6659 adding backend schema
+945bf86 improving seo
+1bedc7b fixing asio
+477c549 adding sitemap
+b08ec63 adding seo
+4041c6b changing styles of ui
+a473f7b portfolio project

@@ -1,4 +1,11 @@
 {
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ],
   "redirects": [
     {
       "source": "http://shalinikumari.in/:path*",

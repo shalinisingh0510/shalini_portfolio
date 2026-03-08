@@ -1,0 +1,23 @@
+﻿ shalini-portfolio/api/contact.js                   |  11 -
+ shalini-portfolio/index.html                       |   6 +-
+ shalini-portfolio/package-lock.json                |  61 +-
+ shalini-portfolio/package.json                     |   3 +-
+ shalini-portfolio/public/sitemap.xml               |  78 ++
+ shalini-portfolio/scripts/generate-seo-files.mjs   |  62 +-
+ shalini-portfolio/src/App.jsx                      |  28 +
+ .../src/components/common/FloatingTech.jsx         |  81 ++-
+ .../src/components/common/SectionHeader.jsx        |  33 +-
+ shalini-portfolio/src/components/layout/Navbar.jsx |   3 +
+ shalini-portfolio/src/index.css                    | 261 ++++++-
+ shalini-portfolio/src/pages/BlogPost.jsx           | 323 ++++++++
+ shalini-portfolio/src/sections/About.jsx           | 107 ++-
+ shalini-portfolio/src/sections/Blog.jsx            | 224 ++++++
+ shalini-portfolio/src/sections/Contact.jsx         |  42 +-
+ shalini-portfolio/src/sections/Hero.jsx            |  54 +-
+ shalini-portfolio/src/sections/Projects.jsx        |  48 +-
+ shalini-portfolio/src/sections/Skills.jsx          |  65 +-
+ shalini-portfolio/src/seo/siteConfig.js            |  19 +-
+ shalini-portfolio/src/services/blogService.js      | 205 ++++++
+ shalini-portfolio/supabase/blog-extend.sql         |  74 ++
+ shalini-portfolio/supabase/seed-blogs.sql          | 808 +++++++++++++++++++++
+ 22 files changed, 2414 insertions(+), 182 deletions(-)

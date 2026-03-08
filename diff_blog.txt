@@ -1,0 +1,15 @@
+﻿ shalini-portfolio/src/App.jsx                      |  28 +
+ .../src/components/common/FloatingTech.jsx         |  81 ++-
+ .../src/components/common/SectionHeader.jsx        |  33 +-
+ shalini-portfolio/src/components/layout/Navbar.jsx |   3 +
+ shalini-portfolio/src/index.css                    | 261 ++++++-
+ shalini-portfolio/src/pages/BlogPost.jsx           | 323 ++++++++
+ shalini-portfolio/src/sections/About.jsx           | 107 ++-
+ shalini-portfolio/src/sections/Blog.jsx            | 156 ++++
+ shalini-portfolio/src/sections/Hero.jsx            |  54 +-
+ shalini-portfolio/src/sections/Projects.jsx        |  48 +-
+ shalini-portfolio/src/sections/Skills.jsx          |  65 +-
+ shalini-portfolio/src/services/blogService.js      | 180 +++++
+ shalini-portfolio/supabase/blog-extend.sql         |  74 ++
+ shalini-portfolio/supabase/seed-blogs.sql          | 808 +++++++++++++++++++++
+ 14 files changed, 2117 insertions(+), 104 deletions(-)
