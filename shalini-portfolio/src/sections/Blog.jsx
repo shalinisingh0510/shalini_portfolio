@@ -127,9 +127,10 @@ const Blog = () => {
                                 <a
                                     href={`/blog/${post.slug}`}
                                     onClick={(e) => navigateToBlog(e, post.slug)}
-                                    className="block h-full bg-surface-lowest/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 hover:shadow-xl hover:border-accent/40 transition-all duration-300 transform group-hover:-translate-y-1 overflow-hidden"
+                                    className="block h-full liquid-3d-card p-6 border-white/10 hover:shadow-xl hover:bg-[#1e293b]/70 transition-all duration-300 transform group-hover:-translate-y-2 overflow-hidden group/card"
                                 >
                                     <div className="h-full flex flex-col relative">
+                                        <div className="absolute inset-0 bg-gradient-to-tr from-[#38bdf8]/5 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
                                         
                                         {post.category && (
                                             <span className="inline-flex self-start items-center px-3 py-1 rounded-md text-xs font-semibold bg-surface-bright text-accent border border-border/50 mb-4">
@@ -187,28 +188,29 @@ const Blog = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="mt-24 max-w-2xl mx-auto rounded-2xl bg-surface-lowest/80 border border-border/50 backdrop-blur-md shadow-xl"
+                    className="mt-24 max-w-2xl mx-auto liquid-3d-card"
                 >
                     <div className="p-10 text-center relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#38bdf8]/10 to-transparent blur-3xl opacity-50 pointer-events-none" />
                         
                         <h3 className="text-2xl font-bold text-foreground mb-3">Stay Updated</h3>
                         <p className="text-muted text-sm mb-8 leading-relaxed">
                             Subscribe to receive notifications when I publish new articles about technical implementations and architectural design.
                         </p>
 
-                        <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-center gap-3">
+                        <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-center gap-4 relative z-10">
                             <input
                                 type="email"
                                 placeholder="Email address"
                                 required
                                 value={subEmail}
                                 onChange={(e) => setSubEmail(e.target.value)}
-                                className="w-full sm:flex-1 bg-surface-bright/50 border border-border/50 rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:border-accent transition-all"
+                                className="w-full sm:flex-1 bg-[#0f172a]/50 border border-white/20 rounded-xl px-5 py-4 text-sm text-foreground focus:outline-none focus:border-[#38bdf8] transition-all"
                             />
                             <button
                                 type="submit"
                                 disabled={subLoading}
-                                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-accent text-white text-sm font-bold shadow-md hover:bg-accent/90 transition-all disabled:opacity-70 disabled:hover:scale-100"
+                                className="w-full sm:w-auto px-8 py-4 liquid-btn-primary disabled:opacity-70 disabled:hover:scale-100"
                             >
                                 {subLoading ? "Subscribing..." : "Subscribe"}
                             </button>

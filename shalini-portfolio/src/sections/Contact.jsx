@@ -82,13 +82,15 @@ const Contact = () => {
           />
 
           <motion.div 
-            className="mt-12 bg-surface-lowest/80 backdrop-blur-md rounded-2xl border border-border/50 shadow-xl"
-            initial={{ opacity: 0, y: 20 }}
+            className="mt-12 liquid-3d-card"
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="p-8 md:p-12 relative overflow-hidden">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              <div className="absolute -inset-10 bg-gradient-to-br from-[#38bdf8]/10 to-transparent blur-3xl opacity-50 pointer-events-none" />
               <form onSubmit={handleSubmit} aria-label="Contact form" className="space-y-6 relative z-10">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -145,13 +147,13 @@ const Contact = () => {
                   aria-hidden="true"
                 />
 
-                <div className="pt-2">
+                <div className="pt-4">
                   <button 
                     type="submit" 
                     disabled={loading} 
-                    className="w-full sm:w-auto rounded-xl bg-accent px-10 py-3.5 text-sm font-bold text-white shadow-md shadow-accent/20 hover:bg-accent/90 transition-all disabled:opacity-70"
+                    className="w-full sm:w-auto liquid-btn-primary px-10 py-4 disabled:opacity-70"
                   >
-                    {loading ? "Sending..." : "Send Message"}
+                    {loading ? "Sending Status..." : "Send Message"}
                   </button>
 
                   {success && (

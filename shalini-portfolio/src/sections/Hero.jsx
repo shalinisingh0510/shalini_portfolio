@@ -1,124 +1,136 @@
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
 import profileFront from "../assets/images/shalini-kumari-alard-university.jpg"
 import profileBack from "../assets/images/shalini-boat.jpg"
-import Button from "../components/common/Button"
 import FloatingTech from "../components/common/FloatingTech"
 
 const roles = [
+  "Software Engineer",
+  "React & Node Developer",
   "Open Source Contributor",
-  "DSA & Problem Solving",
-  "React & Node.js Developer",
 ]
 
 const Hero = () => {
   const [index, setIndex] = useState(0)
-  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % roles.length)
-    }, 2800)
+    }, 3000)
     return () => clearInterval(interval)
   }, [])
 
   return (
-    <section aria-label="Hero section" className="min-h-screen flex items-center justify-center relative pt-16">
+    <section aria-label="Hero section" className="min-h-screen flex items-center justify-center relative pt-20 overflow-hidden perspective-1000">
       
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-accent/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-accent-dim/10 rounded-full blur-[150px]" />
+      {/* Liquid 3D Background Elements - Professional Colors */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Deep Slate/Blue Blurs */}
+        <div className="absolute top-[10%] -left-[10%] w-[40vw] h-[40vw] bg-[#38bdf8]/10 blur-[130px] rounded-full mix-blend-screen" />
+        <div className="absolute bottom-[10%] -right-[10%] w-[50vw] h-[50vw] bg-[#818cf8]/10 blur-[150px] rounded-full mix-blend-screen" />
+        
+        {/* Morphing Liquid Shapes in Background */}
+        <div className="absolute top-[30%] left-[80%] w-[30vw] h-[30vw] border border-[#38bdf8]/10 bg-gradient-to-br from-[#111827]/50 to-transparent morphing-blob backdrop-blur-3xl -z-10 animate-[spin_20s_linear_infinite]" />
+        <div className="absolute bottom-[20%] right-[70%] w-[25vw] h-[25vw] border border-[#818cf8]/10 bg-gradient-to-tr from-[#1f2937]/50 to-transparent morphing-blob backdrop-blur-3xl -z-10 animate-[spin_15s_linear_infinite_reverse]" />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full px-6 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+      <div className="max-w-7xl mx-auto w-full px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
         
-        {/* LEFT PANE - Clean Professional Text Block */}
+        {/* LEFT PANE - Liquid 3D Container */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative"
+          initial={{ opacity: 0, x: -40, rotateY: 10 }}
+          animate={{ opacity: 1, x: 0, rotateY: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="relative perspective-1000"
         >
-          <div className="p-8 md:p-12 relative overflow-hidden bg-surface-lowest/40 backdrop-blur-sm rounded-2xl border border-border/50 shadow-xl">
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface-bright/50 px-4 py-1.5 mb-8 shadow-sm">
-                <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                <span className="text-xs font-semibold text-muted uppercase tracking-widest">Available for Opportunities</span>
-              </div>
+          {/* Main 3D Glass Pane */}
+          <div className="liquid-3d-card p-10 md:p-14 relative float-3d z-20">
+            {/* Subtle Inner Highlight */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-              <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1]">
-                <span className="block text-foreground mb-2">Engineering</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-dim">
-                  Scalable Systems.
-                </span>
-              </h1>
+            <div className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 mb-8 shadow-inner backdrop-blur-md">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#38bdf8] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#38bdf8]"></span>
+              </span>
+              <span className="text-xs font-bold text-[#94a3b8] uppercase tracking-[0.2em]">Open to Work</span>
+            </div>
 
-              <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 relative z-10 min-h-[40px]">
-                <span className="text-xl md:text-2xl text-muted font-medium">I am an</span>
-                <div className="relative inline-block h-8 w-[300px] overflow-hidden">
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={roles[index]}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.4 }}
-                      className="absolute inset-0 text-xl md:text-2xl font-bold text-accent whitespace-nowrap"
-                    >
-                      {roles[index]}
-                    </motion.span>
-                  </AnimatePresence>
-                </div>
-              </div>
+            <h1 className="text-5xl lg:text-7xl font-display font-bold leading-[1.1] mb-6">
+              <span className="block text-white filter drop-shadow-md">Engineering</span>
+              <span className="text-gradient-accent filter drop-shadow-lg">
+                Scalable Systems.
+              </span>
+            </h1>
 
-              <p className="mt-6 text-muted text-lg max-w-lg leading-relaxed">
-                I specialize in building robust backend architectures and sleek, responsive user interfaces, delivering highly performant digital applications.
-              </p>
+            <div className="h-[40px] flex items-center mb-6">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={roles[index]}
+                  initial={{ opacity: 0, y: 15, rotateX: -90 }}
+                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                  exit={{ opacity: 0, y: -15, rotateX: 90 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="text-2xl lg:text-3xl font-bold text-[#38bdf8] tracking-tight origin-bottom"
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  {roles[index]}
+                </motion.span>
+              </AnimatePresence>
+            </div>
 
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Button as="a" href="/projects" className="rounded-xl px-8 py-3.5 text-base bg-accent hover:bg-accent/90 border-none text-white font-semibold shadow-lg shadow-accent/20 transition-all cursor-pointer">
-                  Explore My Work
-                </Button>
-                <Button as="a" href="/contact" variant="outline" className="rounded-xl px-8 py-3.5 text-base border-border hover:bg-surface-bright text-foreground font-medium transition-all cursor-pointer">
-                  Let's Connect
-                </Button>
-              </div>
+            <p className="text-[#94a3b8] text-lg lg:text-xl font-sans max-w-lg leading-relaxed mb-10 font-light">
+              Architecting fluid user interfaces and high-performance backend systems with precision, deep problem solving, and modern tech.
+            </p>
+
+            <div className="flex flex-wrap gap-5">
+              <a href="/projects" className="liquid-btn-primary px-8 py-4 text-sm tracking-wide uppercase transition-transform hover:scale-105">
+                Explore Work
+              </a>
+              <a href="/contact" className="liquid-3d-card px-8 py-4 text-sm font-semibold text-white tracking-wide uppercase transition-all hover:bg-white/10 hover:scale-105 border-white/20">
+                Contact Me
+              </a>
             </div>
           </div>
+          
+          {/* Decorative Liquid Orbit Behind Text Card */}
+          <div className="absolute -inset-4 bg-gradient-to-br from-[#38bdf8]/20 to-transparent blur-3xl opacity-50 -z-10 rounded-[3rem]" />
         </motion.div>
 
-        {/* RIGHT PANE - Clean Circular Profile */}
+        {/* RIGHT PANE - 3D Liquid Profile Morph */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative flex items-center justify-center"
+          initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
+          animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="relative flex items-center justify-center font-sans h-full"
         >
-          <div className="absolute inset-x-0 bottom-[-10%] h-32 bg-accent/10 blur-[80px] rounded-full scale-125 pointer-events-none" />
-          
           <FloatingTech />
 
-          <div className="relative w-[280px] h-[280px] md:w-[400px] md:h-[400px] z-10 group perspective-1000">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent/20 to-accent-dim/20 p-1 shadow-2xl">
+          {/* Morphing 3D Profile Frame */}
+          <div className="relative w-[300px] h-[300px] lg:w-[450px] lg:h-[450px] z-10 group perspective-1000">
+            {/* The outer liquid container */}
+            <div className="absolute inset-0 morphing-blob bg-gradient-to-br from-[#38bdf8]/30 via-transparent to-[#818cf8]/30 p-1.5 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] backdrop-blur-sm transition-transform duration-700 ease-out group-hover:scale-105">
+               
                <motion.div
-                 className="relative w-full h-full rounded-full overflow-hidden border-4 border-surface-lowest shadow-inner [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] transition-all duration-1000 ease-in-out"
+                 className="relative w-full h-full morphing-blob overflow-hidden bg-[#0f172a] shadow-[inset_0_4px_20px_rgba(255,255,255,0.1)] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]"
                >
                  {/* Front Layer */}
-                 <div className="absolute inset-0 [backface-visibility:hidden] bg-surface-lowest">
+                 <div className="absolute inset-0 [backface-visibility:hidden]">
                     <img
                       src={profileFront}
                       alt="Shalini Kumari"
-                      className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+                      className="w-full h-full object-cover opacity-90 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f18]/80 via-transparent to-transparent" />
                  </div>
                  {/* Back Layer */}
-                 <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-surface-lowest">
+                 <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
                     <img
                       src={profileBack}
-                      alt="Shalini Kumari Alternative view"
+                      alt="Shalini Kumari Alternative"
                       className="w-full h-full object-cover"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f18]/80 via-transparent to-transparent" />
                  </div>
                </motion.div>
             </div>
