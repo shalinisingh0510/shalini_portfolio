@@ -73,8 +73,8 @@ const Blog = () => {
     }
 
     return (
-        <section id="blog" aria-label="Blog section" className="py-24 relative">
-            <div className="absolute top-[10%] right-[10%] w-[30vw] h-[30vw] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
+        <section id="blog" aria-label="Blog section" className="py-24 relative font-sans">
+            <div className="absolute top-[10%] right-[10%] w-[30vw] h-[30vw] bg-[#38bdf8]/5 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <SectionHeader
@@ -85,10 +85,10 @@ const Blog = () => {
                 <div className="flex flex-wrap gap-2 mb-12 justify-center">
                     <button
                         onClick={() => setActiveCategory(null)}
-                        className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all ${
+                        className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all shadow-[inset_0_1px_3px_rgba(255,255,255,0.05)] ${
                             !activeCategory 
-                                ? "bg-accent text-white shadow-md shadow-accent/20" 
-                                : "bg-surface-bright/50 border border-border/50 text-muted hover:bg-surface-bright"
+                                ? "bg-gradient-to-br from-[#38bdf8] to-[#0284c7] text-white hover:scale-105" 
+                                : "bg-[#0f172a] border border-white/10 text-[#94a3b8] hover:bg-white/5 hover:text-white"
                         }`}
                     >
                         All
@@ -97,10 +97,10 @@ const Blog = () => {
                         <button
                             key={cat.slug}
                             onClick={() => setActiveCategory(cat.slug)}
-                            className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all ${
+                            className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all shadow-[inset_0_1px_3px_rgba(255,255,255,0.05)] ${
                                 activeCategory === cat.slug 
-                                    ? "bg-accent text-white shadow-md shadow-accent/20" 
-                                    : "bg-surface-bright/50 border border-border/50 text-muted hover:bg-surface-bright"
+                                    ? "bg-gradient-to-br from-[#38bdf8] to-[#0284c7] text-white hover:scale-105" 
+                                    : "bg-[#0f172a] border border-white/10 text-[#94a3b8] hover:bg-white/5 hover:text-white"
                             }`}
                         >
                             {cat.name}
@@ -110,7 +110,7 @@ const Blog = () => {
 
                 {loading && (
                     <div className="flex items-center justify-center py-24">
-                        <div className="h-8 w-8 rounded-full border-2 border-accent border-t-transparent animate-spin" />
+                        <div className="h-8 w-8 rounded-full border-2 border-[#38bdf8] border-t-transparent animate-spin" />
                     </div>
                 )}
 
@@ -127,33 +127,34 @@ const Blog = () => {
                                 <a
                                     href={`/blog/${post.slug}`}
                                     onClick={(e) => navigateToBlog(e, post.slug)}
-                                    className="block h-full liquid-3d-card p-6 border-white/10 hover:shadow-xl hover:bg-[#1e293b]/70 transition-all duration-300 transform group-hover:-translate-y-2 overflow-hidden group/card"
+                                    className="block h-full liquid-3d-card p-10 hover:shadow-[0_20px_40px_-5px_rgba(56,189,248,0.2)] hover:bg-[#1e293b]/70 transition-all duration-300 transform group-hover:-translate-y-2 overflow-hidden group/card float-3d"
+                                    style={{ animationDelay: `${idx * 0.2}s` }}
                                 >
-                                    <div className="h-full flex flex-col relative">
+                                    <div className="h-full flex flex-col relative z-10">
                                         <div className="absolute inset-0 bg-gradient-to-tr from-[#38bdf8]/5 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
                                         
                                         {post.category && (
-                                            <span className="inline-flex self-start items-center px-3 py-1 rounded-md text-xs font-semibold bg-surface-bright text-accent border border-border/50 mb-4">
+                                            <span className="inline-flex self-start items-center px-4 py-1.5 rounded-xl text-xs font-bold uppercase tracking-widest bg-[#0f172a] text-[#38bdf8] border border-white/10 shadow-inner mb-6">
                                                 {post.category.name}
                                             </span>
                                         )}
 
-                                        <h3 className="text-lg font-bold text-foreground leading-snug mb-3 group-hover:text-accent transition-colors">
+                                        <h3 className="text-xl font-display font-bold text-white leading-snug mb-4 group-hover/card:text-[#38bdf8] transition-colors">
                                             {post.title}
                                         </h3>
 
-                                        <p className="text-sm text-muted line-clamp-3 mb-6 leading-relaxed flex-grow">
+                                        <p className="text-sm text-[#94a3b8] line-clamp-3 mb-8 leading-relaxed font-light flex-grow">
                                             {post.excerpt}
                                         </p>
 
-                                        <div className="mt-auto pt-4 border-t border-border/50">
-                                            <div className="flex items-center justify-between text-xs text-muted mb-3">
+                                        <div className="mt-auto pt-6 border-t border-white/10">
+                                            <div className="flex items-center justify-between text-xs text-[#64748b] mb-4">
                                                 <div className="flex items-center gap-2">
                                                     <span>{formatDate(post.published_at)}</span>
-                                                    <span className="h-1 w-1 rounded-full bg-muted/40" />
+                                                    <span className="h-1 w-1 rounded-full bg-[#64748b]/50" />
                                                     <span>{estimateReadTime(post.excerpt)}</span>
                                                 </div>
-                                                <div className="flex items-center gap-1.5 opacity-70 group-hover:opacity-100 group-hover:text-accent transition-colors">
+                                                <div className="flex items-center gap-1.5 opacity-70 group-hover/card:opacity-100 group-hover/card:text-[#38bdf8] transition-colors">
                                                     <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                                                         <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                                                     </svg>
@@ -161,11 +162,11 @@ const Blog = () => {
                                                 </div>
                                             </div>
 
-                                            <div className="flex items-center gap-2 text-xs">
-                                                <span className="h-6 w-6 rounded-full bg-accent flex items-center justify-center text-white text-[10px] font-bold">
+                                            <div className="flex items-center gap-3 text-xs">
+                                                <span className="h-7 w-7 rounded-full bg-gradient-to-br from-[#38bdf8] to-[#0284c7] flex items-center justify-center text-white text-[10px] font-bold shadow-sm">
                                                     S
                                                 </span>
-                                                <span className="font-semibold text-foreground/80">{post.author_name}</span>
+                                                <span className="font-semibold text-white/90">{post.author_name}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -176,25 +177,26 @@ const Blog = () => {
                 )}
 
                 {!loading && posts.length === 0 && (
-                    <div className="text-center py-24 text-muted bg-surface-lowest/50 border border-border/50 rounded-2xl backdrop-blur-md">
-                        <div className="text-4xl mb-4 opacity-50">📝</div>
-                        <p className="text-xl font-bold text-foreground mb-2">No Articles Found</p>
-                        <p className="text-sm">Check back soon for new content.</p>
+                    <div className="text-center py-24 text-[#94a3b8] bg-[#111827]/80 backdrop-blur-3xl border border-white/10 rounded-[2.5rem]">
+                        <div className="text-5xl mb-6 opacity-50">📝</div>
+                        <p className="text-2xl font-display font-bold text-white mb-2">No Articles Found</p>
+                        <p className="text-base font-light">Check back soon for new content.</p>
                     </div>
                 )}
 
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="mt-24 max-w-2xl mx-auto liquid-3d-card"
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="mt-32 max-w-2xl mx-auto liquid-3d-card"
                 >
-                    <div className="p-10 text-center relative overflow-hidden">
+                    <div className="p-12 text-center relative overflow-hidden">
+                        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                         <div className="absolute inset-0 bg-gradient-to-br from-[#38bdf8]/10 to-transparent blur-3xl opacity-50 pointer-events-none" />
                         
-                        <h3 className="text-2xl font-bold text-foreground mb-3">Stay Updated</h3>
-                        <p className="text-muted text-sm mb-8 leading-relaxed">
+                        <h3 className="text-3xl font-display font-bold text-white mb-4 z-10 relative">Stay Updated</h3>
+                        <p className="text-[#94a3b8] text-base mb-10 leading-relaxed font-light z-10 relative">
                             Subscribe to receive notifications when I publish new articles about technical implementations and architectural design.
                         </p>
 
@@ -205,19 +207,19 @@ const Blog = () => {
                                 required
                                 value={subEmail}
                                 onChange={(e) => setSubEmail(e.target.value)}
-                                className="w-full sm:flex-1 bg-[#0f172a]/50 border border-white/20 rounded-xl px-5 py-4 text-sm text-foreground focus:outline-none focus:border-[#38bdf8] transition-all"
+                                className="w-full sm:flex-1 bg-[#0f172a] border border-white/10 rounded-xl px-5 py-4 text-sm text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8]/50 shadow-inner transition-all"
                             />
                             <button
                                 type="submit"
                                 disabled={subLoading}
-                                className="w-full sm:w-auto px-8 py-4 liquid-btn-primary disabled:opacity-70 disabled:hover:scale-100"
+                                className="w-full sm:w-auto px-8 py-4 liquid-btn-primary disabled:opacity-70 text-sm tracking-widest uppercase font-bold text-white"
                             >
                                 {subLoading ? "Subscribing..." : "Subscribe"}
                             </button>
                         </form>
 
                         {subMessage && (
-                            <p className={`mt-4 text-sm font-medium ${subStatus === "success" ? "text-green-500" : "text-red-500"}`}>
+                            <p className={`mt-6 text-sm font-semibold tracking-wide ${subStatus === "success" ? "text-emerald-400" : "text-rose-400"} z-10 relative`}>
                                 {subMessage}
                             </p>
                         )}
