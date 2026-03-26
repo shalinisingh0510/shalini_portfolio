@@ -19,40 +19,54 @@ const internalLinks = [
 
 const Footer = () => {
   return (
-    <footer aria-label="Site footer" className="relative z-10 border-t border-border/70 bg-background/40 backdrop-blur">
-      <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-        <div className="space-y-2">
-          <p className="text-sm text-muted">
-            (c) {new Date().getFullYear()} Shalini Kumari. All rights reserved.
-          </p>
-          <nav aria-label="Internal links" className="flex flex-wrap gap-4 text-sm">
-            {internalLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-muted hover:text-foreground transition"
-                aria-label={`Go to ${link.label} page`}
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-        </div>
+    <footer aria-label="Site footer" className="relative z-10 pt-20 pb-8 overflow-hidden">
+      {/* Footer Aurora Glow */}
+      <div className="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[80vw] h-[40vh] bg-highlight/5 blur-[120px] rounded-fluid pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="p-[1px] rounded-[3rem] bg-gradient-to-b from-white/10 to-transparent">
+          <div className="glass !bg-surface-lowest/80 backdrop-blur-3xl rounded-[3rem] px-8 py-12 md:px-14 flex flex-col md:flex-row md:items-center justify-between gap-10">
+            <div className="space-y-6 max-w-sm">
+              <a href="/" className="text-2xl font-black tracking-widest uppercase text-white">SHA<span className="text-highlight drop-shadow-[0_0_10px_rgba(244,114,182,0.8)]">.</span></a>
+              <p className="text-sm text-white/50 leading-relaxed font-light">
+                Engineering intricate logic blocks, designing visually immersive scalable systems, and maintaining aesthetic perfection.
+              </p>
+              <p className="text-xs font-bold text-white/30 uppercase tracking-widest">
+                &copy; {new Date().getFullYear()} Shalini Kumari.
+              </p>
+            </div>
 
-        <nav aria-label="Identity links" className="flex flex-wrap gap-5 text-sm">
-          {identityLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="me noopener noreferrer"
-              className="text-muted hover:text-foreground transition"
-              aria-label={`Open ${link.label} profile`}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+            <div className="flex flex-col gap-8 md:items-end">
+              <nav aria-label="Internal links" className="flex flex-wrap gap-x-6 gap-y-3 md:justify-end text-sm font-semibold">
+                {internalLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="text-white/60 hover:text-accent hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.8)] transition-all"
+                    aria-label={`Go to ${link.label} page`}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
+
+              <nav aria-label="Identity links" className="flex flex-wrap gap-x-6 gap-y-3 md:justify-end text-sm font-semibold">
+                {identityLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="me noopener noreferrer"
+                    className="text-white/60 hover:text-highlight hover:drop-shadow-[0_0_8px_rgba(244,114,182,0.8)] transition-all"
+                    aria-label={`Open ${link.label} profile`}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   )

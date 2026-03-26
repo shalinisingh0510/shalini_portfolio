@@ -18,7 +18,7 @@ const ThemeToggle = () => {
         w-10
         rounded-full
         border
-        border-border/70
+        border-border/20
         bg-card/60
         backdrop-blur
         transition

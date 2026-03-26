@@ -42,7 +42,7 @@ const DSA = () => {
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 200 }}
                 className={
-                  "group relative overflow-hidden block rounded-2xl border border-border/70 bg-card/70 p-5 backdrop-blur transition hover:border-border"
+                  "group relative overflow-hidden block rounded-2xl glass-card p-5 transition hover:border-border"
                 }
               >
                 <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br opacity-60" />

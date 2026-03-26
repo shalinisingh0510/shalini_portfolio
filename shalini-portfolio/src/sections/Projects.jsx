@@ -1,112 +1,147 @@
-import { motion } from "framer-motion"
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
+import { useState } from "react"
 import SectionHeader from "../components/common/SectionHeader"
-import Card from "../components/ui/Card"
 import { projects } from "../data/projects"
 import { staggerContainer } from "../animations/stagger"
 import { fadeUp } from "../animations/fade"
 
 const techColors = {
-  "React": "bg-sky-500/15 border-sky-500/30 text-sky-400",
-  "Tailwind CSS": "bg-teal-500/15 border-teal-500/30 text-teal-400",
-  "Framer Motion": "bg-purple-500/15 border-purple-500/30 text-purple-400",
-  "C++": "bg-blue-500/15 border-blue-500/30 text-blue-400",
-  "Data Structures": "bg-amber-500/15 border-amber-500/30 text-amber-400",
-  "Algorithms": "bg-orange-500/15 border-orange-500/30 text-orange-400",
-  "JavaScript": "bg-yellow-500/15 border-yellow-500/30 text-yellow-400",
-  "GitHub API": "bg-gray-500/15 border-gray-500/30 text-gray-400",
-  "REST APIs": "bg-emerald-500/15 border-emerald-500/30 text-emerald-400",
+  "React": "border-sky-500/50 text-sky-300 shadow-[0_0_10px_rgba(14,165,233,0.3)]",
+  "Tailwind CSS": "border-teal-500/50 text-teal-300 shadow-[0_0_10px_rgba(20,184,166,0.3)]",
+  "Framer Motion": "border-purple-500/50 text-purple-300 shadow-[0_0_10px_rgba(168,85,247,0.3)]",
+  "C++": "border-blue-500/50 text-blue-300 shadow-[0_0_10px_rgba(59,130,246,0.3)]",
+  "Data Structures": "border-amber-500/50 text-amber-300 shadow-[0_0_10px_rgba(245,158,11,0.3)]",
+  "Algorithms": "border-orange-500/50 text-orange-300 shadow-[0_0_10px_rgba(249,115,22,0.3)]",
+  "JavaScript": "border-yellow-500/50 text-yellow-300 shadow-[0_0_10px_rgba(234,179,8,0.3)]",
+  "GitHub API": "border-gray-400/50 text-gray-200 shadow-[0_0_10px_rgba(156,163,175,0.3)]",
+  "REST APIs": "border-emerald-500/50 text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.3)]",
+}
+
+const ProjectCard3D = ({ project, index }) => {
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+
+  const mouseXSpring = useSpring(x)
+  const mouseYSpring = useSpring(y)
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["18deg", "-18deg"])
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-18deg", "18deg"])
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const width = rect.width
+    const height = rect.height
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
+    const xPct = mouseX / width - 0.5
+    const yPct = mouseY / height - 0.5
+    x.set(xPct)
+    y.set(yPct)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+  }
+
+  return (
+    <motion.article
+      variants={fadeUp}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      className="relative z-10 w-full rounded-[2.5rem] p-[1px] bg-gradient-to-br from-highlight/50 via-border/10 to-accent/50 group"
+    >
+      <div 
+        className="w-full h-full glass-card !bg-surface-bright/30 backdrop-blur-3xl rounded-[2.5rem] p-8 md:p-10 relative overflow-hidden transition-colors duration-500 group-hover:bg-surface-bright/50"
+        style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }}
+      >
+        {/* Glow Element Tracking Hover (simulated by inner gradient pulse) */}
+        <div className="absolute -inset-10 opacity-0 group-hover:opacity-100 bg-gradient-to-tr from-accent/20 to-highlight/20 blur-[60px] transition-opacity duration-700 pointer-events-none" style={{ transform: "translateZ(-1px)" }} />
+
+        {index === 0 && (
+          <div className="absolute top-6 right-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-highlight to-accent-dim text-white shadow-[0_0_20px_rgba(255,0,102,0.4)]" style={{ transform: "translateZ(50px)" }}>
+            <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
+            Featured
+          </div>
+        )}
+
+        <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 tracking-tight" style={{ transform: "translateZ(60px)" }}>
+          {project.title}
+        </h3>
+
+        <p className="mt-4 text-muted/90 leading-relaxed" style={{ transform: "translateZ(40px)" }}>
+          {project.description}
+        </p>
+
+        <ul className="mt-6 space-y-3 text-sm text-foreground/80 font-medium" style={{ transform: "translateZ(35px)" }}>
+          {project.highlights.map((point) => (
+            <li key={point} className="flex items-start gap-3">
+              <span className="mt-1 h-2 w-2 rounded-full bg-accent shrink-0 shadow-[0_0_8px_rgba(0,240,255,0.8)]" />
+              {point}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-8 flex flex-wrap gap-3" style={{ transform: "translateZ(80px)" }}>
+          {project.tech.map((t) => (
+            <span
+              key={t}
+              className={`text-xs px-4 py-1.5 rounded-full font-bold border backdrop-blur-md ${techColors[t] || "border-accent/40 text-accent shadow-[0_0_10px_rgba(0,240,255,0.3)]"}`}
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex mt-10 items-center justify-center gap-3 w-full rounded-full border border-white/10 bg-white/5 py-4 text-sm font-bold text-white shadow-soft transition-all hover:bg-white/10 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] group/link"
+          style={{ transform: "translateZ(90px)" }}
+        >
+          <span>View Source on GitHub</span>
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            className="h-5 w-5 transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M7 17L17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </a>
+      </div>
+    </motion.article>
+  )
 }
 
 const Projects = () => {
   return (
-    <section id="projects" aria-label="Projects section" className="py-28">
+    <section id="projects" aria-label="Projects section" className="py-32 relative">
       <SectionHeader
-        title="Projects"
-        subtitle="Selected work demonstrating engineering thinking, clean architecture, and real-world problem solving."
+        title="Engineering Artifacts"
+        subtitle="Exploring the limits of front-end dynamics and algorithmic efficiency."
       />
+
+      {/* Aurora Ambient Elements */}
+      <div className="absolute top-[20%] right-0 w-[40vw] h-[40vw] bg-accent/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none animate-aurora" />
 
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
-        className="grid md:grid-cols-2 gap-8"
+        viewport={{ once: true, margin: "-100px" }}
+        className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12"
+        style={{ perspective: "1500px" }}
       >
         {projects.map((project, i) => (
-          <motion.article
-            key={project.title}
-            variants={fadeUp}
-          >
-            <Card className="h-full shimmer-border relative">
-              {/* Featured badge for first project */}
-              {i === 0 && (
-                <div className="featured-badge z-20">
-                  <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  Featured
-                </div>
-              )}
-
-              {/* Project Title */}
-              <h3 className="text-lg font-semibold translate-z-4">
-                {project.title}
-              </h3>
-
-              {/* Description */}
-              <p className="mt-2 text-muted text-body translate-z-2">
-                {project.description}
-              </p>
-
-              {/* Highlights */}
-              <ul className="mt-4 space-y-2 text-sm text-muted translate-z-2">
-                {project.highlights.map((point) => (
-                  <li key={point} className="flex items-start gap-2 hover:text-foreground transition">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Tech Stack — Colored Tags */}
-              <div className="mt-4 flex flex-wrap gap-2 translate-z-3">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className={`text-xs px-3 py-1 rounded-full font-medium border ${techColors[t] || "bg-accent/10 border-accent/25 text-accent"
-                      }`}
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              {/* Link with animated arrow */}
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="depth-button mt-6 group"
-              >
-                <span className="inline-flex items-center justify-center h-6 w-6 rounded-full border border-border/70 bg-foreground/5">
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                  </svg>
-                </span>
-                <span>View on GitHub</span>
-              </a>
-            </Card>
-          </motion.article>
+          <ProjectCard3D key={project.title} project={project} index={i} />
         ))}
       </motion.div>
     </section>
