@@ -45,135 +45,120 @@ const Navbar = () => {
       <SnowEffect isActive={isSnowing} />
       <TerminalModal isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
 
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 100, damping: 20 }}
-        className={`fixed top-4 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:w-[90%] max-w-6xl z-50 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] rounded-[2rem] p-[1px] ${
+      <header
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           scrolled || isOpen
-            ? "bg-gradient-to-r from-accent/20 via-border/10 to-highlight/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-            : "bg-transparent shadow-none"
+            ? "bg-surface-lowest/80 backdrop-blur-md shadow-sm border-b border-border/50"
+            : "bg-transparent"
         }`}
       >
-        <div className={`transition-all duration-700 w-full h-full rounded-[2rem] ${scrolled || isOpen ? "bg-surface-lowest/60 backdrop-blur-3xl border border-white/5" : "bg-transparent"}`}>
-          <nav aria-label="Primary navigation" className="px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             {/* Logo */}
-            <a href="/" className="text-xl font-black tracking-widest uppercase flex-shrink-0 z-50 text-white" aria-label="Shalini Homepage" onClick={closeMenu}>
-              SHA<span className="text-accent drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]">.</span>
+            <a href="/" className="text-xl font-bold tracking-wide flex-shrink-0 z-50 text-foreground" aria-label="Shalini Homepage" onClick={closeMenu}>
+              Shalini<span className="text-accent">.</span>
             </a>
 
             {/* Desktop Navigation */}
             <div className="flex items-center gap-6">
-              <ul className="hidden md:flex items-center gap-1 p-1 rounded-full border border-white/5 bg-white/5">
+              <ul className="hidden md:flex items-center gap-6">
                 {navLinks.map((link) => (
                   <li key={link.name}>
-                    <a className="px-4 py-1.5 rounded-full text-sm font-semibold text-white/60 hover:text-white hover:bg-white/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all flex items-center" href={link.href} aria-label={`Go to ${link.name} section`}>
+                    <a className="text-sm font-medium text-muted hover:text-foreground transition-colors py-2" href={link.href} aria-label={`Go to ${link.name} section`}>
                       {link.name}
                     </a>
                   </li>
                 ))}
               </ul>
 
-              <div className="hidden md:flex items-center gap-3">
+              <div className="hidden md:flex items-center gap-4">
                 <button
                   onClick={() => setIsSnowing(!isSnowing)}
-                  className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-accent/10 border border-white/5 bg-white/5 transition-colors text-white text-sm"
+                  className="w-8 h-8 flex items-center justify-center rounded-md hover:bg-surface-bright/50 transition-colors text-muted hover:text-foreground text-sm"
                   aria-label="Toggle snow effect"
                 >
                   {isSnowing ? '❄️' : '☁️'}
                 </button>
                 <button
                   onClick={() => setIsTerminalOpen(true)}
-                  className="px-4 py-1.5 rounded-full hover:bg-surface-bright/60 transition-colors text-white font-mono text-xs border border-white/10 bg-surface-lowest/50 backdrop-blur-md flex items-center gap-2 group shadow-[0_0_10px_rgba(0,0,0,0.5)]"
+                  className="px-3 py-1.5 rounded-md hover:bg-surface-bright/80 transition-colors text-foreground font-mono text-xs border border-border/50 bg-surface-lowest flex items-center gap-2"
                   aria-label="Open Terminal"
                 >
-                  <span className="text-highlight font-black group-hover:text-accent transition-colors">&gt;_</span> CLI
+                  <span className="text-accent font-bold">&gt;_</span> CLI
                 </button>
-                <div className="w-px h-6 bg-white/10 mx-1" />
+                <div className="w-px h-5 bg-border/50 mx-1" />
                 <ThemeToggle />
               </div>
 
               {/* Mobile Menu Toggle */}
               <button
-                className="md:hidden flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:bg-accent/10 text-white transition-colors z-50"
+                className="md:hidden flex items-center justify-center w-10 h-10 rounded-md hover:bg-surface-bright/50 text-foreground transition-colors z-50"
                 onClick={toggleMenu}
                 aria-expanded={isOpen}
                 aria-label={isOpen ? "Close menu" : "Open menu"}
               >
                 <div className="relative w-5 h-4 flex flex-col justify-between overflow-hidden">
-                  <span className={`w-full h-[2px] bg-current rounded-full transform transition-all duration-300 origin-left ${isOpen ? "rotate-45 translate-x-[2px]" : ""}`} />
-                  <span className={`w-full h-[2px] bg-current rounded-full transform transition-all duration-300 ${isOpen ? "opacity-0 translate-x-4" : ""}`} />
-                  <span className={`w-full h-[2px] bg-current rounded-full transform transition-all duration-300 origin-left ${isOpen ? "-rotate-45 translate-x-[2px]" : ""}`} />
+                  <span className={`w-full h-[2px] bg-current rounded-sm transform transition-all duration-300 origin-left ${isOpen ? "rotate-45 translate-x-[2px]" : ""}`} />
+                  <span className={`w-full h-[2px] bg-current rounded-sm transform transition-all duration-300 ${isOpen ? "opacity-0 translate-x-4" : ""}`} />
+                  <span className={`w-full h-[2px] bg-current rounded-sm transform transition-all duration-300 origin-left ${isOpen ? "-rotate-45 translate-x-[2px]" : ""}`} />
                 </div>
               </button>
             </div>
-          </nav>
         </div>
 
         {/* Mobile Navigation Overlay */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: -20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -20 }}
-              transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
-              className="md:hidden absolute top-[calc(100%+0.5rem)] left-0 w-full bg-surface-lowest/80 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.8)] overflow-hidden"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden absolute top-16 left-0 w-full bg-surface-lowest/95 backdrop-blur-lg border-b border-border/50 shadow-lg overflow-hidden"
             >
-              <div className="px-6 py-6 pb-8 flex flex-col gap-6 max-h-[80vh] overflow-y-auto">
-                <ul className="flex flex-col gap-2">
-                  {navLinks.map((link, i) => (
-                    <motion.li
-                      key={link.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.2, delay: i * 0.05 }}
-                    >
+              <div className="px-6 py-6 pb-8 flex flex-col gap-4 max-h-[80vh] overflow-y-auto">
+                <ul className="flex flex-col gap-1">
+                  {navLinks.map((link) => (
+                    <li key={link.name}>
                       <a
                         href={link.href}
-                        className="block text-lg py-3 px-6 rounded-2xl font-bold border border-transparent text-white/60 hover:text-white hover:bg-white/5 hover:border-white/10 transition-all text-center"
+                        className="block text-base py-3 px-4 rounded-md font-medium text-muted hover:text-foreground hover:bg-surface-bright/50 transition-colors"
                         onClick={closeMenu}
                       >
                         {link.name}
                       </a>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
 
-                <motion.div
-                  className="pt-6 mt-2 flex flex-col gap-4 border-t border-white/10"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <div className="flex items-center justify-between px-4 py-3 bg-white/5 rounded-2xl border border-white/5">
-                    <span className="text-sm font-bold text-white/50 uppercase tracking-widest border border-transparent">Terminal Module</span>
+                <div className="pt-4 mt-2 flex flex-col gap-4 border-t border-border/50">
+                  <div className="flex items-center justify-between px-2 py-2">
+                    <span className="text-sm font-medium text-muted">Terminal</span>
                     <button
                       onClick={() => { setIsTerminalOpen(true); closeMenu(); }}
-                      className="px-4 py-2 rounded-xl bg-accent/20 text-accent font-mono text-xs border border-accent/40 font-bold tracking-widest shadow-[0_0_15px_rgba(56,189,248,0.2)]"
+                      className="px-3 py-1.5 rounded-md bg-surface-bright text-foreground font-mono text-xs border border-border/50"
                     >
-                      &gt;_ OPEN
+                      &gt;_ Open
                     </button>
                   </div>
-                  <div className="flex items-center justify-between px-4 py-3 bg-white/5 rounded-2xl border border-white/5">
-                    <span className="text-sm font-bold text-white/50 uppercase tracking-widest">Snow Protocol</span>
+                  <div className="flex items-center justify-between px-2 py-2">
+                    <span className="text-sm font-medium text-muted">Snow Effect</span>
                     <button
                       onClick={() => setIsSnowing(!isSnowing)}
-                      className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/10 border border-white/20 text-white shadow-soft transition-all"
+                      className="w-8 h-8 flex items-center justify-center rounded-md bg-surface-bright border border-border/50 text-foreground transition-all"
                     >
                       {isSnowing ? '❄️' : '☁️'}
                     </button>
                   </div>
-                  <div className="flex items-center justify-between px-4 py-3 bg-white/5 rounded-2xl border border-white/5">
-                    <span className="text-sm font-bold text-white/50 uppercase tracking-widest">UI Theme</span>
+                  <div className="flex items-center justify-between px-2 py-2">
+                    <span className="text-sm font-medium text-muted">Theme</span>
                     <ThemeToggle />
                   </div>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.header>
+      </header>
     </>
   )
 }
