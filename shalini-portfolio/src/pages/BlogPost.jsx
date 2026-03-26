@@ -153,8 +153,10 @@ const BlogPost = ({ slug }) => {
                 Back to Articles
             </a>
 
-            <div className="bg-surface-lowest/40 backdrop-blur-md rounded-2xl border border-border/50 p-8 md:p-12 shadow-sm relative overflow-hidden">
-                
+            <div className="liquid-3d-card p-8 md:p-14 relative overflow-hidden group">
+                {/* Physical Glass Inset Overlay for Depth */}
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                <div className="absolute -inset-10 bg-gradient-to-br from-[#38bdf8]/10 to-transparent blur-3xl opacity-50 pointer-events-none" />
                 <div className="flex items-center gap-4 mb-6">
                     {post.category && (
                         <span className="inline-flex items-center px-3 py-1 rounded-md text-xs font-semibold uppercase tracking-widest bg-surface-bright text-accent border border-border/50">
@@ -204,11 +206,11 @@ const BlogPost = ({ slug }) => {
             </div>
 
             <div className="mt-12">
-                <h3 className="text-xl font-bold text-foreground mb-6">
+                <h3 className="text-2xl font-display font-bold text-white mb-8">
                     Comments ({comments.length})
                 </h3>
 
-                <form onSubmit={handleComment} className="mb-10 p-6 rounded-2xl bg-surface-lowest/40 border border-border/50 shadow-sm space-y-4">
+                <form onSubmit={handleComment} className="mb-12 p-8 liquid-3d-card space-y-6">
                     <input
                         type="text"
                         placeholder="Your Name"
@@ -217,7 +219,8 @@ const BlogPost = ({ slug }) => {
                         maxLength={100}
                         value={commentForm.name}
                         onChange={(e) => setCommentForm((f) => ({ ...f, name: e.target.value }))}
-                        className="w-full bg-surface-bright/50 border border-border/50 focus:border-accent rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted/50 transition-colors focus:outline-none"
+                        className="w-full bg-[#0f172a]/50 border border-white/10 focus:border-[#38bdf8]/50 rounded-xl px-5 py-4 text-sm text-[#f8fafc] placeholder-[#94a3b8]/50 transition-all focus:outline-none focus:ring-1 focus:ring-[#38bdf8]/50"
+
                     />
                     <textarea
                         placeholder="Write a comment..."
@@ -227,13 +230,14 @@ const BlogPost = ({ slug }) => {
                         rows={3}
                         value={commentForm.text}
                         onChange={(e) => setCommentForm((f) => ({ ...f, text: e.target.value }))}
-                        className="w-full bg-surface-bright/50 border border-border/50 focus:border-accent rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted/50 transition-colors focus:outline-none resize-none"
+                        className="w-full bg-[#0f172a]/50 border border-white/10 focus:border-[#38bdf8]/50 rounded-xl px-5 py-4 text-sm text-[#f8fafc] placeholder-[#94a3b8]/50 transition-all focus:outline-none resize-none focus:ring-1 focus:ring-[#38bdf8]/50"
+
                     />
                     <div className="flex justify-end pt-2">
                         <button
                             type="submit"
                             disabled={submitting}
-                            className="px-6 py-2.5 rounded-xl text-sm font-bold bg-accent text-white hover:bg-accent/90 transition-all disabled:opacity-70"
+                            className="liquid-btn-primary px-8 py-3.5 disabled:opacity-70 disabled:hover:scale-100"
                         >
                             {submitting ? "Posting..." : "Post Comment"}
                         </button>
@@ -247,7 +251,7 @@ const BlogPost = ({ slug }) => {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.05 }}
-                            className="p-5 rounded-xl bg-surface-bright/20 border border-border/30 backdrop-blur-sm"
+                            className="p-6 liquid-3d-card"
                         >
                             <div className="flex items-center justify-between mb-2">
                                 <div className="flex items-center gap-3">

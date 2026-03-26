@@ -9,39 +9,26 @@ const Resume = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="
-          relative
-          overflow-hidden
-          rounded-2xl
-          border border-border/70
-          bg-card/75
-          p-10
-          flex flex-col md:flex-row
-          items-start md:items-center
-          justify-between
-          gap-8
-          shadow-soft
-          backdrop-blur
-        "
+        className="liquid-3d-card p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-10 hover:bg-[#1e293b]/50 transition-colors duration-500 float-3d group"
       >
         {/* Glow */}
-        <div className="absolute inset-0 bg-gradient-to-r from-accent/20 via-highlight/15 to-transparent opacity-0 hover:opacity-100 transition duration-700" />
+        <div className="absolute -top-20 -left-20 w-64 h-64 bg-gradient-to-br from-[#38bdf8]/10 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition duration-700 pointer-events-none" />
 
         {/* Text */}
-        <div className="relative z-10">
-          <h2 className="text-2xl font-semibold">
+        <div className="relative z-10 flex-1">
+          <h2 className="text-3xl font-display font-bold text-white">
             Download My Resume
           </h2>
-          <p className="mt-3 text-muted max-w-xl">
+          <p className="mt-4 text-[#94a3b8] text-lg max-w-2xl font-light">
             A concise overview of my skills, projects, open-source work,
             and problem-solving experience.
           </p>
         </div>
 
         {/* Button */}
-        <Button as="a" href="/resume.pdf" download className="relative z-10">
-          Download Resume <span className="ml-2 text-lg">?</span>
-        </Button>
+        <a href="/resume.pdf" download className="liquid-btn-primary px-10 py-5 text-sm uppercase tracking-widest whitespace-nowrap z-10">
+          Download Resume <span className="ml-3 font-serif">→</span>
+        </a>
       </motion.div>
     </section>
   )

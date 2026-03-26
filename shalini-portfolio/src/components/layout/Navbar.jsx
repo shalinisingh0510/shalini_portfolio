@@ -63,8 +63,10 @@ const Navbar = () => {
               <ul className="hidden md:flex items-center gap-6">
                 {navLinks.map((link) => (
                   <li key={link.name}>
-                    <a className="text-sm font-medium text-muted hover:text-foreground transition-colors py-2" href={link.href} aria-label={`Go to ${link.name} section`}>
-                      {link.name}
+                    <a className="relative px-3 py-2 text-sm font-semibold tracking-wide text-[#94a3b8] hover:text-white transition-colors duration-300 group overflow-hidden" href={link.href} aria-label={`Go to ${link.name} section`}>
+                      <span className="relative z-10">{link.name}</span>
+                      <span className="absolute left-0 bottom-0 w-full h-[2px] bg-[#38bdf8] scale-x-0 group-hover:scale-x-100 origin-right group-hover:origin-left transition-transform duration-300 ease-out shadow-[0_0_10px_rgba(56,189,248,0.8)]" />
+                      <span className="absolute inset-0 bg-[#38bdf8]/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out -z-0 rounded-t-lg" />
                     </a>
                   </li>
                 ))}
@@ -73,17 +75,17 @@ const Navbar = () => {
               <div className="hidden md:flex items-center gap-4">
                 <button
                   onClick={() => setIsSnowing(!isSnowing)}
-                  className="w-8 h-8 flex items-center justify-center rounded-md hover:bg-surface-bright/50 transition-colors text-muted hover:text-foreground text-sm"
+                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#0f172a] border border-[#38bdf8]/20 hover:border-[#38bdf8]/50 hover:bg-[#38bdf8]/10 text-[#f8fafc] transition-all duration-300 shadow-[inset_0_1px_3px_rgba(255,255,255,0.05)] hover:shadow-[0_0_15px_rgba(56,189,248,0.4)]"
                   aria-label="Toggle snow effect"
                 >
                   {isSnowing ? '❄️' : '☁️'}
                 </button>
                 <button
                   onClick={() => setIsTerminalOpen(true)}
-                  className="px-3 py-1.5 rounded-md hover:bg-surface-bright/80 transition-colors text-foreground font-mono text-xs border border-border/50 bg-surface-lowest flex items-center gap-2"
+                  className="px-4 py-2 rounded-xl bg-[#0f172a] border border-[#818cf8]/20 hover:border-[#818cf8]/50 hover:bg-[#818cf8]/10 transition-all duration-300 shadow-[inset_0_1px_3px_rgba(255,255,255,0.05)] hover:shadow-[0_0_15px_rgba(129,140,248,0.4)] text-[#f8fafc] font-mono text-sm flex items-center gap-2"
                   aria-label="Open Terminal"
                 >
-                  <span className="text-accent font-bold">&gt;_</span> CLI
+                  <span className="text-[#38bdf8] font-bold">&gt;_</span> CLI
                 </button>
                 <div className="w-px h-5 bg-border/50 mx-1" />
                 <ThemeToggle />

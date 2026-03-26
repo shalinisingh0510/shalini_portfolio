@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
-import profileFront from "../assets/images/shalini-kumari-alard-university.jpg"
-import profileBack from "../assets/images/shalini-boat.jpg"
+import profileFront from "../assets/images/profile.jpeg"
+import profileBack from "../assets/images/shalini-kumari-alard-university.jpg"
 import FloatingTech from "../components/common/FloatingTech"
 
 const roles = [
@@ -118,7 +118,7 @@ const Hero = () => {
                  <div className="absolute inset-0 [backface-visibility:hidden]">
                     <img
                       src={profileFront}
-                      alt="Shalini Kumari"
+                      alt="Shalini Kumari Front"
                       className="w-full h-full object-cover opacity-90 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f18]/80 via-transparent to-transparent" />
@@ -127,8 +127,8 @@ const Hero = () => {
                  <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
                     <img
                       src={profileBack}
-                      alt="Shalini Kumari Alternative"
-                      className="w-full h-full object-cover"
+                      alt="Shalini Kumari Back"
+                      className="w-full h-full object-cover opacity-90 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f18]/80 via-transparent to-transparent" />
                  </div>

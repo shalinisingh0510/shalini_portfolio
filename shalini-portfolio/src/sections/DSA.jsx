@@ -15,21 +15,25 @@ const DSA = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* LEFT: Philosophy */}
-          <Card>
-            <p className="text-muted text-body leading-relaxed">
+          <div className="liquid-3d-card p-10 relative overflow-hidden group hover:bg-[#1e293b]/50 transition-colors duration-500">
+            <h3 className="text-2xl font-display font-bold text-white mb-6">Algorithm Strategy</h3>
+            <p className="text-[#94a3b8] text-lg leading-relaxed font-light">
               {dsaProfile.philosophy}
             </p>
 
-            <h4 className="mt-6 font-semibold">
+            <h4 className="mt-8 font-display font-semibold text-[#38bdf8] uppercase tracking-widest text-sm mb-4">
               Core Strengths
             </h4>
 
-            <ul className="mt-3 list-disc list-inside text-muted space-y-1">
+            <ul className="mt-3 text-[#f8fafc] space-y-3 font-medium">
               {dsaProfile.strengths.map((skill) => (
-                <li key={skill}>{skill}</li>
+                <li key={skill} className="flex items-center gap-3">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#38bdf8] shadow-[0_0_10px_rgba(56,189,248,0.8)]" />
+                  {skill}
+                </li>
               ))}
             </ul>
-          </Card>
+          </div>
 
           {/* RIGHT: Profiles */}
           <div className="space-y-5">
@@ -45,19 +49,19 @@ const DSA = () => {
                   "group relative overflow-hidden block rounded-2xl glass-card p-5 transition hover:border-border"
                 }
               >
-                <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br opacity-60" />
-                <div className={`pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br ${profile.color}`} />
+                <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-[#1e293b]/50 to-transparent opacity-60" />
+                <div className={`pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br ${profile.color} opacity-20`} />
                 <div className="relative z-10 flex items-center justify-between">
                   <div>
-                    <h3 className="font-semibold">
+                    <h3 className="text-lg font-display font-bold text-white group-hover:text-[#38bdf8] transition-colors">
                       {profile.platform}
                     </h3>
-                    <p className="text-sm text-muted">
+                    <p className="text-sm text-[#94a3b8] mt-1">
                       @{profile.username}
                     </p>
                   </div>
 
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition group-hover:gap-3">
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#38bdf8] transition-all group-hover:gap-3 group-hover:text-white">
                     <span className="inline-flex items-center justify-center h-7 w-7 rounded-full border border-border/70 bg-foreground/5">
                       <svg
                         aria-hidden="true"
