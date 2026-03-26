@@ -63,15 +63,15 @@ const Hero = () => {
               </span>
             </h1>
 
-            <div className="h-[40px] flex items-center mb-6">
+            <div className="h-[50px] md:h-[60px] flex items-center mb-8 relative z-10">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={roles[index]}
-                  initial={{ opacity: 0, y: 15, rotateX: -90 }}
+                  initial={{ opacity: 0, y: 20, rotateX: -90 }}
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                  exit={{ opacity: 0, y: -15, rotateX: 90 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="text-2xl lg:text-3xl font-bold text-[#38bdf8] tracking-tight origin-bottom"
+                  exit={{ opacity: 0, y: -20, rotateX: 90 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-3xl lg:text-4xl font-display font-extrabold text-[#38bdf8] tracking-tight origin-bottom drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]"
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   {roles[index]}

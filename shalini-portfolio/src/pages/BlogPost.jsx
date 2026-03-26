@@ -102,7 +102,8 @@ const BlogPost = ({ slug }) => {
             })
             .replace(/^- (.+)$/gm, '<li class="flex items-start gap-4 my-3 text-[#94a3b8] leading-relaxed font-light"><span class="mt-2.5 h-1.5 w-1.5 rounded-full bg-[#38bdf8] shadow-[0_0_10px_rgba(56,189,248,0.8)] shrink-0"></span><span>$1</span></li>')
             .replace(/^\d+\. (.+)$/gm, '<li class="flex items-start gap-3 my-3 text-[#94a3b8] leading-relaxed font-light"><span class="mt-0.5 text-[#38bdf8] font-bold shrink-0">#</span><span>$1</span></li>')
-            .replace(/^(?!<[htuplroi]|$)(.+)$/gm, '<p class="text-[#94a3b8] leading-[1.8] my-6 font-light text-lg">$1</p>')
+            .replace(/^(?!<[htuplroidv]|tr|$)(.+)$/gm, '<p class="text-[#94a3b8] leading-[1.8] my-6 font-light text-lg">$1</p>')
+
 
         html = html.replace(/((<tr>.*?<\/tr>\s*)+)/g, '<div class="overflow-x-auto my-10"><table class="w-full text-left border-collapse border border-white/10 bg-[#0f172a] rounded-2xl shadow-inner">$1</table></div>')
         html = html.replace(/((<li.*?<\/li>\s*)+)/g, '<ul class="my-6 space-y-2">$1</ul>')

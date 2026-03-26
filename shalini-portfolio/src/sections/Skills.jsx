@@ -164,31 +164,41 @@ const Skills = () => {
             className="mt-16 grid lg:grid-cols-2 gap-10"
           >
             {openSourceContributions.map((item, idx) => (
-              <motion.article key={item.project} variants={fadeUp} className="group cursor-pointer">
-                <div className="h-full p-10 liquid-3d-card float-3d transition-all duration-500 hover:bg-[#1e293b]/50" style={{ animationDelay: `${idx * 0.5}s` }}>
+              <motion.article key={item.project} variants={fadeUp} className="group">
+                <div className="h-full p-10 liquid-3d-card float-3d transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(56,189,248,0.15)] overflow-hidden" style={{ animationDelay: `${idx * 0.4}s` }}>
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  
                   <div className="mb-8 flex items-center justify-between">
                     <h3 className="text-3xl font-display font-bold text-white transition-colors duration-300 group-hover:text-[#38bdf8]">
                       {item.project}
                     </h3>
+                    <div className="h-10 w-10 rounded-xl bg-[#0f172a] border border-white/10 flex items-center justify-center text-[#38bdf8] shadow-inner">
+                       <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                       </svg>
+                    </div>
                   </div>
+
                   <p className="text-[#94a3b8] text-lg mb-8 leading-relaxed font-light">
                     {item.description}
                   </p>
-                  <ul className="space-y-4 mb-10">
+
+                  <div className="space-y-4 mb-10">
                     {item.impact.map((point) => (
-                      <li key={point} className="flex items-start gap-4 text-white/80 font-medium">
-                        <span className="mt-1.5 h-2 w-2 rounded-full bg-[#38bdf8] shrink-0" />
-                        {point}
-                      </li>
+                      <div key={point} className="flex items-start gap-4">
+                        <span className="mt-2 h-2 w-2 rounded-full bg-[#38bdf8] shadow-[0_0_10px_rgba(56,189,248,0.8)] shrink-0" />
+                        <span className="text-white/80 font-medium">{point}</span>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
+
                   <a
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 text-sm font-bold text-[#38bdf8] uppercase tracking-widest group-hover:text-white transition-colors"
+                    className="liquid-btn-primary px-8 py-4 text-xs font-bold uppercase tracking-widest inline-flex items-center justify-center gap-3 transition-transform hover:scale-105"
                   >
-                    View Contribution
+                    <span>View Contribution</span>
                     <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <line x1="5" y1="12" x2="19" y2="12"></line>
                       <polyline points="12 5 19 12 12 19"></polyline>
