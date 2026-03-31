@@ -71,8 +71,8 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" aria-label="Contact section" className="py-24 relative overflow-hidden">
-      <div className="absolute top-[20%] -left-[10%] w-[40vw] h-[40vw] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
+    <section id="contact" aria-label="Contact section" className="py-24 relative overflow-hidden bg-[#0a0f18]">
+      <div className="absolute top-[20%] -left-[10%] w-[40vw] h-[40vw] bg-[#38bdf8]/5 blur-[120px] rounded-full pointer-events-none" />
       
       <div className="max-w-3xl mx-auto px-6 relative z-10">
         <AnimatedSection>
@@ -94,7 +94,7 @@ const Contact = () => {
               <form onSubmit={handleSubmit} aria-label="Contact form" className="space-y-6 relative z-10">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-muted ml-1">Your Name</label>
+                    <label className="text-sm font-semibold text-[#94a3b8] ml-1">Your Name</label>
                     <input
                       type="text"
                       name="name"
@@ -103,12 +103,12 @@ const Contact = () => {
                       required
                       value={form.name}
                       onChange={handleChange}
-                      className="w-full bg-surface-bright/50 border border-border/50 focus:border-accent rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted/50 transition-colors focus:outline-none focus:ring-1 focus:ring-accent/50"
+                      className="w-full bg-[#1f2937]/50 border border-white/10 focus:border-[#38bdf8] rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 transition-colors focus:outline-none focus:ring-1 focus:ring-[#38bdf8]/50"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-muted ml-1">Email Address</label>
+                    <label className="text-sm font-semibold text-[#94a3b8] ml-1">Email Address</label>
                     <input
                       type="email"
                       name="email"
@@ -117,13 +117,13 @@ const Contact = () => {
                       required
                       value={form.email}
                       onChange={handleChange}
-                      className="w-full bg-surface-bright/50 border border-border/50 focus:border-accent rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted/50 transition-colors focus:outline-none focus:ring-1 focus:ring-accent/50"
+                      className="w-full bg-[#1f2937]/50 border border-white/10 focus:border-[#38bdf8] rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 transition-colors focus:outline-none focus:ring-1 focus:ring-[#38bdf8]/50"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-muted ml-1">Message</label>
+                  <label className="text-sm font-semibold text-[#94a3b8] ml-1">Message</label>
                   <textarea
                     name="message"
                     placeholder="How can I help you?"
@@ -132,7 +132,7 @@ const Contact = () => {
                     rows="5"
                     value={form.message}
                     onChange={handleChange}
-                    className="w-full bg-surface-bright/50 border border-border/50 focus:border-accent rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted/50 transition-colors focus:outline-none focus:ring-1 focus:ring-accent/50 resize-none"
+                    className="w-full bg-[#1f2937]/50 border border-white/10 focus:border-[#38bdf8] rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 transition-colors focus:outline-none focus:ring-1 focus:ring-[#38bdf8]/50 resize-none"
                   />
                 </div>
 

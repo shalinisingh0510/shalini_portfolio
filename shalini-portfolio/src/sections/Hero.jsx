@@ -25,13 +25,13 @@ const Hero = () => {
       
       {/* Liquid 3D Background Elements - Professional Colors */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Deep Slate/Blue Blurs */}
-        <div className="absolute top-[10%] -left-[10%] w-[40vw] h-[40vw] bg-[#38bdf8]/10 blur-[130px] rounded-full mix-blend-screen" />
-        <div className="absolute bottom-[10%] -right-[10%] w-[50vw] h-[50vw] bg-[#818cf8]/10 blur-[150px] rounded-full mix-blend-screen" />
+        {/* Deep Slate/Blue Blurs - Dark Mode */}
+        <div className="absolute top-[10%] -left-[10%] w-[40vw] h-[40vw] bg-[#38bdf8]/10 dark:bg-[#38bdf8]/10 blur-[130px] rounded-full mix-blend-screen" />
+        <div className="absolute bottom-[10%] -right-[10%] w-[50vw] h-[50vw] bg-[#818cf8]/10 dark:bg-[#818cf8]/10 blur-[150px] rounded-full mix-blend-screen" />
         
         {/* Morphing Liquid Shapes in Background */}
-        <div className="absolute top-[30%] left-[80%] w-[30vw] h-[30vw] border border-[#38bdf8]/10 bg-gradient-to-br from-[#111827]/50 to-transparent morphing-blob backdrop-blur-3xl -z-10 animate-[spin_20s_linear_infinite]" />
-        <div className="absolute bottom-[20%] right-[70%] w-[25vw] h-[25vw] border border-[#818cf8]/10 bg-gradient-to-tr from-[#1f2937]/50 to-transparent morphing-blob backdrop-blur-3xl -z-10 animate-[spin_15s_linear_infinite_reverse]" />
+        <div className="absolute top-[30%] left-[80%] w-[30vw] h-[30vw] border border-[#38bdf8]/10 dark:border-[#38bdf8]/10 bg-gradient-to-br from-[#111827]/50 dark:from-[#111827]/50 to-transparent morphing-blob backdrop-blur-3xl -z-10 animate-[spin_20s_linear_infinite]" />
+        <div className="absolute bottom-[20%] right-[70%] w-[25vw] h-[25vw] border border-[#818cf8]/10 dark:border-[#818cf8]/10 bg-gradient-to-tr from-[#1f2937]/50 dark:from-[#1f2937]/50 to-transparent morphing-blob backdrop-blur-3xl -z-10 animate-[spin_15s_linear_infinite_reverse]" />
       </div>
 
       <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 grid lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10 overflow-hidden">
@@ -48,16 +48,16 @@ const Hero = () => {
             {/* Subtle Inner Highlight */}
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-            <div className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 mb-8 shadow-inner backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 rounded-xl border border-white/10 dark:border-white/10 bg-white/5 dark:bg-white/5 px-4 py-2 mb-8 shadow-inner backdrop-blur-md">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#38bdf8] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#38bdf8]"></span>
               </span>
-              <span className="text-xs font-bold text-[#94a3b8] uppercase tracking-[0.2em]">Open to Work</span>
+              <span className="text-xs font-bold text-[#94a3b8] dark:text-[#94a3b8] uppercase tracking-[0.2em]">Open to Work</span>
             </div>
 
             <h1 className="text-3xl md:text-5xl lg:text-7xl font-display font-bold leading-[1.1] mb-6">
-              <span className="block text-white filter drop-shadow-md">Engineering</span>
+              <span className="block text-black dark:text-white filter drop-shadow-md">Engineering</span>
               <span className="text-gradient-accent filter drop-shadow-lg">
                 Scalable Systems.
               </span>
@@ -79,7 +79,7 @@ const Hero = () => {
               </AnimatePresence>
             </div>
 
-            <p className="text-base md:text-lg lg:text-xl font-sans max-w-lg leading-relaxed mb-10 font-light">
+            <p className="text-base md:text-lg lg:text-xl font-sans max-w-lg leading-relaxed mb-10 font-light text-gray-600 dark:text-[#94a3b8]">
               Architecting fluid user interfaces and high-performance backend systems with precision, deep problem solving, and modern tech.
             </p>
 
@@ -87,7 +87,7 @@ const Hero = () => {
               <a href="/projects" className="liquid-btn-primary px-6 py-3 md:px-8 md:py-4 text-sm tracking-wide uppercase transition-transform hover:scale-105">
                 Explore Work
               </a>
-              <a href="/contact" className="liquid-3d-card px-6 py-3 md:px-8 md:py-4 text-sm font-semibold text-white tracking-wide uppercase transition-all hover:bg-white/10 hover:scale-105 border-white/20">
+              <a href="/contact" className="liquid-3d-card px-6 py-3 md:px-8 md:py-4 text-sm font-semibold text-black dark:text-white tracking-wide uppercase transition-all hover:bg-white/10 hover:scale-105 border-white/20 dark:border-white/20">
                 Contact Me
               </a>
             </div>

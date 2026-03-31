@@ -12,7 +12,17 @@ const useTheme = () => {
 
   useEffect(() => {
     const root = window.document.documentElement
-    root.classList.toggle("dark", theme === "dark")
+    
+    // Remove both classes first
+    root.classList.remove("dark", "light")
+    
+    // Add the appropriate class
+    if (theme === "dark") {
+      root.classList.add("dark")
+    } else {
+      root.classList.add("light")
+    }
+    
     window.localStorage.setItem("theme", theme)
   }, [theme])
 

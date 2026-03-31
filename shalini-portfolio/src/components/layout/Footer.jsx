@@ -19,15 +19,15 @@ const internalLinks = [
 
 const Footer = () => {
   return (
-    <footer aria-label="Site footer" className="relative z-10 pt-20 pb-8 overflow-hidden">
+    <footer aria-label="Site footer" className="relative z-10 pt-20 pb-8 overflow-hidden bg-[#0a0f18]">
       {/* Footer Aurora Glow */}
-      <div className="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[80vw] h-[40vh] bg-highlight/5 blur-[120px] rounded-fluid pointer-events-none" />
+      <div className="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[80vw] h-[40vh] bg-[#818cf8]/5 blur-[120px] rounded-fluid pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6">
         <div className="p-[1px] rounded-[3rem] bg-gradient-to-b from-white/10 to-transparent">
-          <div className="glass !bg-surface-lowest/80 backdrop-blur-3xl rounded-[3rem] px-8 py-12 md:px-14 flex flex-col md:flex-row md:items-center justify-between gap-10">
+          <div className="glass !bg-[#111827]/80 backdrop-blur-3xl rounded-[3rem] px-8 py-12 md:px-14 flex flex-col md:flex-row md:items-center justify-between gap-10">
             <div className="space-y-6 max-w-sm">
-              <a href="/" className="text-2xl font-black tracking-widest uppercase text-white">SHA<span className="text-highlight drop-shadow-[0_0_10px_rgba(244,114,182,0.8)]">.</span></a>
+              <a href="/" className="text-2xl font-black tracking-widest uppercase text-white">SHA<span className="text-[#818cf8] drop-shadow-[0_0_10px_rgba(129,140,248,0.8)]">.</span></a>
               <p className="text-sm text-white/50 leading-relaxed font-light">
                 Engineering intricate logic blocks, designing visually immersive scalable systems, and maintaining aesthetic perfection.
               </p>
@@ -42,7 +42,7 @@ const Footer = () => {
                   <a
                     key={link.label}
                     href={link.href}
-                    className="text-white/60 hover:text-accent hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.8)] transition-all"
+                    className="text-white/60 hover:text-[#38bdf8] hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.8)] transition-all"
                     aria-label={`Go to ${link.label} page`}
                   >
                     {link.label}
@@ -57,7 +57,7 @@ const Footer = () => {
                     href={link.href}
                     target="_blank"
                     rel="me noopener noreferrer"
-                    className="text-white/60 hover:text-highlight hover:drop-shadow-[0_0_8px_rgba(244,114,182,0.8)] transition-all"
+                    className="text-white/60 hover:text-[#38bdf8] hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.8)] transition-all"
                     aria-label={`Open ${link.label} profile`}
                   >
                     {link.label}

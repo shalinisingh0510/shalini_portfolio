@@ -7,21 +7,67 @@
 
 @layer base {
   :root {
-    --bg-primary: #0a0f18; /* Deep Midnight */
-    --bg-secondary: #111827; /* Rich Slate */
-    --bg-tertiary: #1f2937; /* Lighter Slate */
+    /* Dark Mode Colors (Default) */
+    --bg-primary: #0a0f18;
+    --bg-secondary: #111827;
+    --bg-tertiary: #1f2937;
     
     --text-primary: #f8fafc;
     --text-secondary: #94a3b8;
     
-    --accent-primary: #38bdf8; /* Professional Sky Blue */
-    --accent-secondary: #818cf8; /* Muted Indigo */
+    --accent-primary: #38bdf8;
+    --accent-secondary: #818cf8;
     
     --border-color: rgba(255, 255, 255, 0.08);
+    
+    /* CSS Variables for Tailwind */
+    --bg: 10.6 92% 9%;
+    --fg: 210 40% 98%;
+    --muted: 217 33% 58%;
+    --accent: 199 89% 48%;
+    --accent-dim: 226 100% 55%;
+    --highlight: 198 93% 50%;
+    --card: 217 32% 17%;
+    --border: 217 33% 15%;
+    --ring: 199 89% 48%;
+    --surface-bright: 217 32% 20%;
+    --surface-lowest: 217 32% 10%;
+  }
+
+  /* Light Mode */
+  .light {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --bg-tertiary: #e9e9e9;
+    
+    --text-primary: #0a0f18;
+    --text-secondary: #475569;
+    
+    --accent-primary: #0284c7;
+    --accent-secondary: #6366f1;
+    
+    --border-color: rgba(0, 0, 0, 0.1);
+    
+    /* CSS Variables for Tailwind Light Mode */
+    --bg: 0 0% 100%;
+    --fg: 217 32% 17%;
+    --muted: 217 33% 35%;
+    --accent: 200 100% 38%;
+    --accent-dim: 226 100% 55%;
+    --highlight: 198 93% 50%;
+    --card: 217 32% 95%;
+    --border: 217 32% 85%;
+    --ring: 200 100% 38%;
+    --surface-bright: 217 32% 90%;
+    --surface-lowest: 217 32% 98%;
   }
 
   body {
-    @apply bg-[#0a0f18] text-[#f8fafc] font-sans antialiased overflow-x-hidden selection:bg-[#38bdf8] selection:text-[#0f172a];
+    @apply bg-[#0a0f18] dark:bg-[#0a0f18] text-[#f8fafc] dark:text-[#f8fafc] font-sans antialiased overflow-x-hidden selection:bg-[#38bdf8] selection:text-[#0f172a];
+  }
+
+  .light body {
+    @apply bg-white text-[#0a0f18];
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -40,12 +86,20 @@
 
   /* Liquid 3D Card Look - Professional Colors, Physical Depth */
   .liquid-3d-card {
-    @apply bg-[#111827]/80 backdrop-blur-2xl border border-white/10;
+    @apply bg-[#111827]/80 dark:bg-[#111827]/80 backdrop-blur-2xl border border-white/10;
     box-shadow: 
       0 20px 40px -10px rgba(0, 0, 0, 0.5),
       inset 0 1px 0 rgba(255, 255, 255, 0.1),
       inset 0 0 20px rgba(255, 255, 255, 0.02);
     border-radius: 2.5rem;
+  }
+
+  .light .liquid-3d-card {
+    @apply bg-white/60 border-black/10;
+    box-shadow: 
+      0 20px 40px -10px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(0, 0, 0, 0.05),
+      inset 0 0 20px rgba(0, 0, 0, 0.02);
   }
 
   /* Elevated Liquid Button */
@@ -97,5 +151,9 @@
   
   .text-gradient-accent {
     @apply text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#818cf8];
+  }
+
+  .light .text-gradient-accent {
+    @apply bg-gradient-to-r from-[#0284c7] to-[#6366f1];
   }
 }

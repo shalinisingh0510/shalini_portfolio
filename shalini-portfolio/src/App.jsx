@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar"
 import Footer from "./components/layout/Footer"
 import AuroraBackground from "./components/common/AuroraBackground"
 import SeoHead from "./components/seo/SeoHead"
+import useTheme from "./hooks/useTheme"
 
 import Hero from "./sections/Hero"
 const About = lazy(() => import("./sections/About"))
@@ -31,6 +32,7 @@ const normalizePath = (path) => {
 
 function App() {
   const [currentPath, setCurrentPath] = useState(normalizePath(window.location.pathname))
+  useTheme() // Initialize theme on mount
 
   useEffect(() => {
     const handleLocationChange = () => {
