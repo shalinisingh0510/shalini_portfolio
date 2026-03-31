@@ -52,7 +52,7 @@ const About = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="grid grid-cols-3 gap-4 mb-10"
+        className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10"
       >
         {stats.map((stat, idx) => (
           <div key={stat.label} className="liquid-3d-card p-6 flex flex-col items-center justify-center text-center animate-float3D" style={{ animationDelay: `${idx * 0.2}s` }}>

@@ -1,4 +1,4 @@
-import { supabase } from "./supabaseClient"
+import { isSupabaseConfigured } from "./supabaseClient"
 
 const LIKE_KEY_PREFIX = "blog_liked_"
 
@@ -6,6 +6,10 @@ const LIKE_KEY_PREFIX = "blog_liked_"
  * Fetch all published blog posts with like counts and category info
  */
 export async function fetchBlogPosts(categorySlug = null) {
+    if (!isSupabaseConfigured) return []
+
+    const { supabase } = await import("./supabaseClient")
+
     let query = supabase
         .from("blog_posts")
         .select(`
@@ -47,6 +51,10 @@ export async function fetchBlogPosts(categorySlug = null) {
  * Fetch a single blog post by slug with full content, comments, and like count
  */
 export async function fetchBlogPost(slug) {
+    if (!isSupabaseConfigured) return null
+
+    const { supabase } = await import("./supabaseClient")
+
     const { data, error } = await supabase
         .from("blog_posts")
         .select(`
@@ -82,6 +90,10 @@ export async function fetchBlogPost(slug) {
  * Fetch all blog categories
  */
 export async function fetchCategories() {
+    if (!isSupabaseConfigured) return []
+
+    const { supabase } = await import("./supabaseClient")
+
     const { data, error } = await supabase
         .from("blog_categories")
         .select("id, slug, name")
@@ -98,6 +110,10 @@ export async function fetchCategories() {
  * Like a blog post (deduplicated by localStorage fingerprint)
  */
 export async function likeBlogPost(postId) {
+    if (!isSupabaseConfigured) return { liked: false }
+
+    const { supabase } = await import("./supabaseClient")
+
     const fingerprint = getFingerprint()
     const storageKey = LIKE_KEY_PREFIX + postId
 
@@ -139,6 +155,10 @@ export function isPostLiked(postId) {
  * Add a comment to a blog post
  */
 export async function addComment(postId, commenterName, commentText) {
+    if (!isSupabaseConfigured) return null
+
+    const { supabase } = await import("./supabaseClient")
+
     const { data, error } = await supabase
         .from("blog_comments")
         .insert({
@@ -183,6 +203,10 @@ function getFingerprint() {
  * Subscribe to the blog newsletter
  */
 export async function subscribeToNewsletter(email) {
+    if (!isSupabaseConfigured) return { success: false, error: "Service unavailable" }
+
+    const { supabase } = await import("./supabaseClient")
+
     const safeEmail = String(email || "").trim().toLowerCase()
     if (!safeEmail || !safeEmail.includes("@")) {
         return { success: false, error: "Invalid email address" }

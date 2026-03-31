@@ -34,7 +34,7 @@ const Hero = () => {
         <div className="absolute bottom-[20%] right-[70%] w-[25vw] h-[25vw] border border-[#818cf8]/10 bg-gradient-to-tr from-[#1f2937]/50 to-transparent morphing-blob backdrop-blur-3xl -z-10 animate-[spin_15s_linear_infinite_reverse]" />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 grid lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10 overflow-hidden">
         
         {/* LEFT PANE - Liquid 3D Container */}
         <motion.div
@@ -44,7 +44,7 @@ const Hero = () => {
           className="relative perspective-1000"
         >
           {/* Main 3D Glass Pane */}
-          <div className="liquid-3d-card p-10 md:p-14 relative float-3d z-20">
+          <div className="liquid-3d-card p-6 md:p-10 lg:p-14 relative float-3d z-20">
             {/* Subtle Inner Highlight */}
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
@@ -56,7 +56,7 @@ const Hero = () => {
               <span className="text-xs font-bold text-[#94a3b8] uppercase tracking-[0.2em]">Open to Work</span>
             </div>
 
-            <h1 className="text-5xl lg:text-7xl font-display font-bold leading-[1.1] mb-6">
+            <h1 className="text-3xl md:text-5xl lg:text-7xl font-display font-bold leading-[1.1] mb-6">
               <span className="block text-white filter drop-shadow-md">Engineering</span>
               <span className="text-gradient-accent filter drop-shadow-lg">
                 Scalable Systems.
@@ -71,7 +71,7 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   exit={{ opacity: 0, y: -20, rotateX: 90 }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-3xl lg:text-4xl font-display font-extrabold text-[#38bdf8] tracking-tight origin-bottom drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]"
+                  className="text-xl md:text-3xl lg:text-4xl font-display font-extrabold text-[#38bdf8] tracking-tight origin-bottom drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]"
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   {roles[index]}
@@ -79,15 +79,15 @@ const Hero = () => {
               </AnimatePresence>
             </div>
 
-            <p className="text-[#94a3b8] text-lg lg:text-xl font-sans max-w-lg leading-relaxed mb-10 font-light">
+            <p className="text-base md:text-lg lg:text-xl font-sans max-w-lg leading-relaxed mb-10 font-light">
               Architecting fluid user interfaces and high-performance backend systems with precision, deep problem solving, and modern tech.
             </p>
 
-            <div className="flex flex-wrap gap-5">
-              <a href="/projects" className="liquid-btn-primary px-8 py-4 text-sm tracking-wide uppercase transition-transform hover:scale-105">
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-5">
+              <a href="/projects" className="liquid-btn-primary px-6 py-3 md:px-8 md:py-4 text-sm tracking-wide uppercase transition-transform hover:scale-105">
                 Explore Work
               </a>
-              <a href="/contact" className="liquid-3d-card px-8 py-4 text-sm font-semibold text-white tracking-wide uppercase transition-all hover:bg-white/10 hover:scale-105 border-white/20">
+              <a href="/contact" className="liquid-3d-card px-6 py-3 md:px-8 md:py-4 text-sm font-semibold text-white tracking-wide uppercase transition-all hover:bg-white/10 hover:scale-105 border-white/20">
                 Contact Me
               </a>
             </div>
@@ -107,7 +107,7 @@ const Hero = () => {
           <FloatingTech />
 
           {/* Morphing 3D Profile Frame */}
-          <div className="relative w-[300px] h-[300px] lg:w-[450px] lg:h-[450px] z-10 group perspective-1000">
+          <div className="relative w-[250px] h-[250px] md:w-[300px] md:h-[300px] lg:w-[450px] lg:h-[450px] z-10 group perspective-1000">
             {/* The outer liquid container */}
             <div className="absolute inset-0 morphing-blob bg-gradient-to-br from-[#38bdf8]/30 via-transparent to-[#818cf8]/30 p-1.5 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] backdrop-blur-sm transition-transform duration-700 ease-out group-hover:scale-105">
                

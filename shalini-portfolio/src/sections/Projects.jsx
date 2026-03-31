@@ -65,11 +65,11 @@ const ProjectCardLiquid3D = ({ project, index }) => {
           </div>
         )}
 
-        <h3 className="text-3xl font-display font-bold text-white tracking-tight mb-4" style={{ transform: "translateZ(60px)" }}>
+        <h3 className="text-2xl md:text-3xl font-display font-bold text-white tracking-tight mb-4" style={{ transform: "translateZ(60px)" }}>
           {project.title}
         </h3>
 
-        <p className="text-[#94a3b8] font-sans leading-relaxed text-lg" style={{ transform: "translateZ(40px)" }}>
+        <p className="text-[#94a3b8] font-sans leading-relaxed text-base md:text-lg" style={{ transform: "translateZ(40px)" }}>
           {project.description}
         </p>
 

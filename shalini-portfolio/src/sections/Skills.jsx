@@ -67,7 +67,7 @@ const Skills = () => {
               className={`liquid-3d-card relative float-3d`}
               style={{ animationDelay: `${idx * 0.3}s` }}
             >
-              <div className="h-full bg-gradient-to-br from-[#1e293b]/40 to-transparent rounded-[2.5rem] p-10 relative overflow-hidden transition-colors duration-[1s] hover:bg-[#1e293b]/60">
+              <div className="h-full bg-gradient-to-br from-[#1e293b]/40 to-transparent rounded-[2.5rem] p-6 md:p-10 relative overflow-hidden transition-colors duration-[1s] hover:bg-[#1e293b]/60">
                 
                 {/* Subtle soft gradient light flare */}
                 <div className="absolute -top-20 -right-20 w-48 h-48 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-2xl" />
