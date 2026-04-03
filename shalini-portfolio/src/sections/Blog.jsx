@@ -9,11 +9,38 @@ const Blog = () => {
     const [posts, setPosts] = useState([])
     const [categories, setCategories] = useState([])
     const [activeCategory, setActiveCategory] = useState(null)
+    const [page, setPage] = useState(1)
+    const [totalPosts, setTotalPosts] = useState(0)
     const [loading, setLoading] = useState(true)
+
+    const loadData = async () => {
+        setLoading(true)
+
+        const [catsData] = await Promise.all([
+            categories.length ? Promise.resolve(categories) : fetchCategories(),
+        ])
+
+        const result = await fetchBlogPosts(activeCategory, page, 6)
+        setPosts(result.posts)
+        setTotalPosts(result.total)
+
+        if (!categories.length) setCategories(catsData)
+        setLoading(false)
+    }
+
+    const totalPages = Math.max(1, Math.ceil(totalPosts / 6))
+
+    useEffect(() => {
+        setPage(1)
+    }, [activeCategory])
 
     useEffect(() => {
         loadData()
-    }, [activeCategory])
+    }, [activeCategory, page])
+
+    useEffect(() => {
+        if (page > totalPages) setPage(totalPages)
+    }, [page, totalPages])
 
     const [subEmail, setSubEmail] = useState("")
     const [subLoading, setSubLoading] = useState(false)
@@ -40,17 +67,6 @@ const Blog = () => {
         }
 
         setSubLoading(false)
-    }
-
-    const loadData = async () => {
-        setLoading(true)
-        const [postsData, catsData] = await Promise.all([
-            fetchBlogPosts(activeCategory),
-            categories.length ? Promise.resolve(categories) : fetchCategories(),
-        ])
-        setPosts(postsData)
-        if (!categories.length) setCategories(catsData)
-        setLoading(false)
     }
 
     const formatDate = (dateStr) => {
@@ -181,6 +197,31 @@ const Blog = () => {
                         <div className="text-5xl mb-6 opacity-50">📝</div>
                         <p className="text-2xl font-display font-bold text-white mb-2">No Articles Found</p>
                         <p className="text-base font-light">Check back soon for new content.</p>
+                    </div>
+                )}
+
+                {!loading && totalPosts > 0 && (
+                    <div className="mt-10 flex flex-wrap justify-center items-center gap-2">
+                        <span className="text-sm text-[#cbd5e1] mr-3">Page {page} of {totalPages}</span>
+                        {[...Array(totalPages)].map((_, index) => {
+                            const pageNum = index + 1
+                            const isActive = page === pageNum
+                            if (totalPages > 7 && Math.abs(pageNum - page) > 2 && pageNum !== 1 && pageNum !== totalPages) {
+                                if (pageNum === 2 || pageNum === totalPages - 1) {
+                                    return <span key={pageNum} className="mx-1 text-sm text-[#94a3b8]">...</span>
+                                }
+                                return null
+                            }
+                            return (
+                                <button
+                                    key={pageNum}
+                                    onClick={() => setPage(pageNum)}
+                                    className={`px-3 py-1.5 rounded-md border text-sm ${isActive ? "bg-[#38bdf8] text-black" : "bg-[#0f172a] border-white/10 text-[#94a3b8] hover:bg-[#1e293b]"}`}
+                                >
+                                    {pageNum}
+                                </button>
+                            )
+                        })}
                     </div>
                 )}
 

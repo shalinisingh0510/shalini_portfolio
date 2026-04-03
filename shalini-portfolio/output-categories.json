@@ -1,0 +1,45 @@
+{
+  "data": [
+    {
+      "id": "06ebd37d-ce57-4fb7-ad7e-bf1e5b2d2ee7",
+      "slug": "dsa",
+      "name": "DSA",
+      "description": "Data Structures & Algorithms",
+      "created_at": "2026-02-23T12:10:20.122136+00:00",
+      "updated_at": "2026-02-23T12:10:20.122136+00:00"
+    },
+    {
+      "id": "23ea2384-d8a0-4b0b-909d-94fd9c002a5c",
+      "slug": "system-design",
+      "name": "System Design",
+      "description": "Architecture, scalability, and design patterns",
+      "created_at": "2026-02-23T12:10:20.122136+00:00",
+      "updated_at": "2026-02-23T12:10:20.122136+00:00"
+    },
+    {
+      "id": "52789ec5-e812-4aa2-882f-a6a642cfdd84",
+      "slug": "mern-stack",
+      "name": "MERN Stack",
+      "description": "MongoDB, Express, React, Node.js development",
+      "created_at": "2026-02-23T12:10:20.122136+00:00",
+      "updated_at": "2026-02-23T12:10:20.122136+00:00"
+    },
+    {
+      "id": "3a06c1a4-f1ef-4b3b-a1ac-153ddbbf389c",
+      "slug": "cloud",
+      "name": "Cloud & DevOps",
+      "description": "AWS, Docker, CI/CD and cloud infrastructure",
+      "created_at": "2026-02-23T12:10:20.122136+00:00",
+      "updated_at": "2026-02-23T12:10:20.122136+00:00"
+    },
+    {
+      "id": "2050e1a7-6283-410d-973b-3051017a2bcf",
+      "slug": "web-dev",
+      "name": "Web Development",
+      "description": "Frontend, backend, and full-stack web technologies",
+      "created_at": "2026-02-23T12:10:20.122136+00:00",
+      "updated_at": "2026-02-23T12:10:20.122136+00:00"
+    }
+  ],
+  "error": null
+}

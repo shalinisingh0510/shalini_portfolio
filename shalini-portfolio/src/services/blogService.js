@@ -5,12 +5,31 @@ const LIKE_KEY_PREFIX = "blog_liked_"
 /**
  * Fetch all published blog posts with like counts and category info
  */
-export async function fetchBlogPosts(categorySlug = null) {
-    if (!isSupabaseConfigured) return []
+export async function fetchBlogPosts(categorySlug = null, page = 1, pageSize = 6) {
+    if (!isSupabaseConfigured) return { posts: [], total: 0 }
 
     const { supabase } = await import("./supabaseClient")
 
-    let query = supabase
+    let categoryId = null
+    if (categorySlug) {
+        const { data: catData, error: catError } = await supabase
+            .from("blog_categories")
+            .select("id")
+            .eq("slug", categorySlug)
+            .single()
+
+        if (catError || !catData) {
+            console.error("Error fetching category for blog posts:", catError)
+            return { posts: [], total: 0 }
+        }
+
+        categoryId = catData.id
+    }
+
+    const from = (page - 1) * pageSize
+    const to = from + pageSize - 1
+
+    let postsQuery = supabase
         .from("blog_posts")
         .select(`
       id, slug, title, excerpt, author_name, college_name,
@@ -20,32 +39,47 @@ export async function fetchBlogPosts(categorySlug = null) {
     `)
         .eq("is_published", true)
         .order("published_at", { ascending: false })
+        .range(from, to)
 
-    if (categorySlug) {
-        query = query.eq("blog_categories.slug", categorySlug)
+    if (categoryId) {
+        postsQuery = postsQuery.eq("category_id", categoryId)
     }
 
-    const { data, error } = await query
+    const { data: fetchData, error: fetchError } = await postsQuery
 
-    if (error) {
-        console.error("Error fetching blog posts:", error)
-        return []
+    if (fetchError) {
+        console.error("Error fetching blog posts:", fetchError)
+        return { posts: [], total: 0 }
     }
 
-    // Filter out posts that don't match category (supabase returns nulls for the join)
-    let posts = data || []
-    if (categorySlug) {
-        posts = posts.filter((p) => p.blog_categories?.slug === categorySlug)
+    let countQuery = supabase
+        .from("blog_posts")
+        .select("id", { count: "exact", head: true })
+        .eq("is_published", true)
+
+    if (categoryId) {
+        countQuery = countQuery.eq("category_id", categoryId)
     }
 
-    return posts.map((post) => ({
+    const { count, error: countError } = await countQuery
+    if (countError) {
+        console.error("Error fetching blog posts count:", countError)
+    }
+
+    const posts = (fetchData || []).map((post) => ({
         ...post,
         category: post.blog_categories,
         likeCount: post.blog_likes?.length || 0,
         blog_categories: undefined,
         blog_likes: undefined,
     }))
+
+    return {
+        posts,
+        total: Number(count || posts.length || 0),
+    }
 }
+
 
 /**
  * Fetch a single blog post by slug with full content, comments, and like count
