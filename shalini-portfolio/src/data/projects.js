@@ -46,13 +46,15 @@ export const projects = [
   {
     title: "Open Source Contribution Dashboard",
     description:
-      "A dashboard to showcase and summarize open-source contributions, PR impact, and learning outcomes from real-world repositories.",
-    tech: ["JavaScript", "GitHub API", "REST APIs"],
+      "A production-ready full-stack dashboard that fetches and visualizes real GitHub contribution analytics — including repository stats, PR success rates, language distribution, and activity trends. Built with clean backend architecture and interactive Recharts visualizations.",
+    tech: ["React", "Node.js", "Express", "Recharts", "GitHub API"],
     highlights: [
-      "API-driven data fetching",
-      "Contribution impact visualization",
-      "Real-world collaboration insights",
+      "Real-time GitHub data with intelligent caching",
+      "Interactive charts for languages, PRs & activity",
+      "Clean Routes → Controllers → Services architecture",
+      "Responsive SaaS-style dashboard UI",
     ],
-    link: "https://github.com/shalinisingh0510/opensource-dashboard",
+    link: "https://github.com/shalinisingh0510/Open-Source-contribution-dashboard",
+    liveLink: "https://open-source-contribution-dashboard.vercel.app",
   },
 ]

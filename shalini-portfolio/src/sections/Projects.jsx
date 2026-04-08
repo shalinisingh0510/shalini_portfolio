@@ -19,6 +19,7 @@ const techColors = {
   "PostgreSQL": "text-[#336791] bg-[#336791]/10 border-[#336791]/30",
   "Groq AI": "text-[#f97316] bg-[#f97316]/10 border-[#f97316]/20",
   "Supabase": "text-[#3ecf8e] bg-[#3ecf8e]/10 border-[#3ecf8e]/20",
+  "Recharts": "text-[#ff6b6b] bg-[#ff6b6b]/10 border-[#ff6b6b]/20",
 }
 
 /* ── SVG Icon components ── */
