@@ -1,6 +1,22 @@
 export const projects = [
   {
-    title: "Aurora Portfolio",
+    title: "Your Advisor",
+    description:
+      "An AI-powered career advisor platform that generates personalized learning roadmaps using Groq LLM. Features user authentication, interactive progress tracking, and smart note-taking — helping students discover and navigate career paths aligned with their interests and goals.",
+    tech: ["React", "Node.js", "Express", "PostgreSQL", "Groq AI", "Tailwind CSS"],
+    highlights: [
+      "AI-driven roadmap generation via Groq LLM",
+      "JWT-based authentication & authorization",
+      "Interactive progress tracking with notes",
+      "Full-stack deployment on Vercel & Render",
+    ],
+    link: "https://github.com/shalinisingh0510/YOUR-ADVISER",
+    liveLink: "https://your-adviser-ow9p.vercel.app/",
+    featured: true,
+  },
+
+  {
+    title: "My Portfolio",
     description:
       "A premium, performance-focused developer portfolio built with React, Tailwind CSS, and Framer Motion. Designed with clean architecture, reusable components, and subtle motion.",
     tech: ["React", "Tailwind CSS", "Framer Motion"],
@@ -9,7 +25,8 @@ export const projects = [
       "Reusable animation variants",
       "Responsive & accessible UI",
     ],
-    link: "https://github.com/your-username/aurora-portfolio",
+    link: "https://github.com/shalinisingh0510/shalini_portfolio",
+    liveLink: "https://shalinisingh.vercel.app/",
   },
 
   {
@@ -22,7 +39,7 @@ export const projects = [
       "Time & space complexity analysis",
       "Focus on fundamentals over brute force",
     ],
-    link: "https://github.com/your-username/dsa-tracker",
+    link: "https://github.com/shalinisingh0510/dsa-tracker",
   },
 
   {
@@ -35,6 +52,6 @@ export const projects = [
       "Contribution impact visualization",
       "Real-world collaboration insights",
     ],
-    link: "https://github.com/your-username/opensource-dashboard",
+    link: "https://github.com/shalinisingh0510/opensource-dashboard",
   },
 ]
