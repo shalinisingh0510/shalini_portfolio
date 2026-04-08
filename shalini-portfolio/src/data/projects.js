@@ -18,15 +18,16 @@ export const projects = [
   {
     title: "My Portfolio",
     description:
-      "A premium, performance-focused developer portfolio built with React, Tailwind CSS, and Framer Motion. Designed with clean architecture, reusable components, and subtle motion.",
-    tech: ["React", "Tailwind CSS", "Framer Motion"],
+      "A high-performance developer portfolio featuring a custom 3D liquid glass design system, immersive Framer Motion animations, and a Supabase-powered dynamic blog with full-text search. Engineered with SEO-first architecture, structured data, and lazy-loaded modules — delivering a stunning, sub-second experience that ranks and converts.",
+    tech: ["React", "Tailwind CSS", "Framer Motion", "Supabase"],
     highlights: [
-      "Component-driven architecture",
-      "Reusable animation variants",
-      "Responsive & accessible UI",
+      "3D liquid glass design system with volumetric depth",
+      "Supabase-powered blog with categories & search",
+      "SEO-optimized with structured data & dynamic sitemap",
+      "Lazy-loaded sections for blazing-fast performance",
     ],
     link: "https://github.com/shalinisingh0510/shalini_portfolio",
-    liveLink: "https://shalinisingh.vercel.app/",
+    liveLink: "https://shalinikumari.in",
   },
 
   {
