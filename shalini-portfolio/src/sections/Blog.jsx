@@ -143,7 +143,7 @@ const Blog = () => {
                                 <a
                                     href={`/blog/${post.slug}`}
                                     onClick={(e) => navigateToBlog(e, post.slug)}
-                                    className="block h-full liquid-3d-card p-10 hover:shadow-[0_20px_40px_-5px_rgba(56,189,248,0.2)] hover:bg-[#1e293b]/70 transition-all duration-300 transform group-hover:-translate-y-2 overflow-hidden group/card float-3d"
+                                    className="block h-full liquid-3d-card p-6 md:p-10 hover:shadow-[0_20px_40px_-5px_rgba(56,189,248,0.2)] hover:bg-[#1e293b]/70 transition-all duration-300 transform group-hover:-translate-y-2 overflow-hidden group/card float-3d"
                                     style={{ animationDelay: `${idx * 0.2}s` }}
                                 >
                                     <div className="h-full flex flex-col relative z-10">
@@ -230,9 +230,9 @@ const Blog = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="mt-32 max-w-2xl mx-auto liquid-3d-card"
+                    className="mt-32 max-w-2xl mx-auto liquid-3d-card w-full"
                 >
-                    <div className="p-12 text-center relative overflow-hidden">
+                    <div className="p-8 md:p-12 text-center relative overflow-hidden">
                         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                         <div className="absolute inset-0 bg-gradient-to-br from-[#38bdf8]/10 to-transparent blur-3xl opacity-50 pointer-events-none" />
                         

@@ -98,7 +98,7 @@ const Skills = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-32 liquid-3d-card p-12 lg:p-16 relative overflow-hidden"
+          className="mt-32 liquid-3d-card p-8 md:p-12 lg:p-16 relative overflow-hidden"
         >
           {/* Subtle noise texture */}
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0ibm9uZSI+PC9yZWN0Pgo8Y2lyY2xlIGN4PSIyIiBjeT0iMiIgcj0iMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSI+PC9jaXJjbGU+Cjwvc3ZnPg==')] opacity-10 mix-blend-overlay pointer-events-none" />
@@ -165,7 +165,7 @@ const Skills = () => {
           >
             {openSourceContributions.map((item, idx) => (
               <motion.article key={item.project} variants={fadeUp} className="group">
-                <div className="h-full p-10 liquid-3d-card float-3d transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(56,189,248,0.15)] overflow-hidden" style={{ animationDelay: `${idx * 0.4}s` }}>
+                <div className="h-full p-8 md:p-10 liquid-3d-card float-3d transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(56,189,248,0.15)] overflow-hidden" style={{ animationDelay: `${idx * 0.4}s` }}>
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                   
                   <div className="mb-8 flex items-center justify-between">

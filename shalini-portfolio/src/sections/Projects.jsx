@@ -20,6 +20,8 @@ const techColors = {
   "Groq AI": "text-[#f97316] bg-[#f97316]/10 border-[#f97316]/20",
   "Supabase": "text-[#3ecf8e] bg-[#3ecf8e]/10 border-[#3ecf8e]/20",
   "Recharts": "text-[#ff6b6b] bg-[#ff6b6b]/10 border-[#ff6b6b]/20",
+  "Chart.js": "text-[#ff6384] bg-[#ff6384]/10 border-[#ff6384]/20",
+  "Vite": "text-[#646cff] bg-[#646cff]/10 border-[#646cff]/20",
 }
 
 /* ── SVG Icon components ── */
@@ -73,14 +75,14 @@ const ProjectCardLiquid3D = ({ project, index }) => {
     >
       {/* 3D Liquid Extruded Card */}
       <div 
-        className="liquid-3d-card w-full h-full p-8 md:p-10 relative overflow-hidden transition-colors duration-500 group-hover:bg-[#1f2937]/90"
+        className="liquid-3d-card w-full h-full p-6 sm:p-8 md:p-10 relative overflow-hidden transition-colors duration-500 group-hover:bg-[#1f2937]/90"
         style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }}
       >
         {/* Dynamic Highlight overlay */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-tr from-[#38bdf8]/10 via-transparent to-transparent transition-opacity duration-700 pointer-events-none" style={{ transform: "translateZ(-1px)" }} />
 
         {project.featured && (
-          <div className="absolute top-6 right-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-2xl text-xs font-bold uppercase tracking-wider bg-[#38bdf8]/20 text-[#38bdf8] border border-[#38bdf8]/30 shadow-inner" style={{ transform: "translateZ(50px)" }}>
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-2xl text-xs font-bold uppercase tracking-wider bg-[#38bdf8]/20 text-[#38bdf8] border border-[#38bdf8]/30 shadow-inner" style={{ transform: "translateZ(50px)" }}>
             <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
             </svg>
@@ -109,7 +111,7 @@ const ProjectCardLiquid3D = ({ project, index }) => {
           {project.tech.map((t) => (
             <span
               key={t}
-              className={`text-xs px-3 py-1.5 rounded-xl font-semibold border ${techColors[t] || "border-white/10 text-white/80 bg-white/5"}`}
+              className={`text-[10px] sm:text-xs px-3 py-1.5 rounded-xl font-semibold border ${techColors[t] || "border-white/10 text-white/80 bg-white/5"}`}
             >
               {t}
             </span>
@@ -117,7 +119,7 @@ const ProjectCardLiquid3D = ({ project, index }) => {
         </div>
 
         {/* ── Action Buttons ── */}
-        <div style={{ transform: "translateZ(70px)" }} className="mt-12 flex gap-3">
+        <div style={{ transform: "translateZ(70px)" }} className="mt-12 flex flex-col xs:flex-row gap-3">
           {/* Live Preview Button (Eye Icon) — only if liveLink exists */}
           {project.liveLink && (
             <a
@@ -130,7 +132,7 @@ const ProjectCardLiquid3D = ({ project, index }) => {
               <span className="transition-transform group-hover/live:scale-110">
                 <EyeIcon />
               </span>
-              <span className="font-display tracking-wide uppercase text-sm">Live Preview</span>
+              <span className="font-display tracking-wide uppercase text-[10px] sm:text-xs md:text-sm">Live Preview</span>
             </a>
           )}
 
@@ -149,7 +151,7 @@ const ProjectCardLiquid3D = ({ project, index }) => {
             <span className="transition-transform group-hover/gh:scale-110">
               <GitHubIcon />
             </span>
-            <span className="font-display tracking-wide uppercase text-sm">View Code</span>
+            <span className="font-display tracking-wide uppercase text-[10px] sm:text-xs md:text-sm">View Code</span>
           </a>
         </div>
       </div>

@@ -70,7 +70,7 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="liquid-3d-card h-full p-8 md:p-12 hover:bg-[#1e293b]/50 transition-colors">
+          <div className="liquid-3d-card h-full p-6 sm:p-8 md:p-12 hover:bg-[#1e293b]/50 transition-colors">
             <div className="flex items-center gap-4 mb-6">
               <span className="flex items-center justify-center h-12 w-12 rounded-xl bg-[#0f172a] border border-[#38bdf8]/30 shadow-inner text-xl">
                 🚀
@@ -95,7 +95,7 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="liquid-3d-card h-full p-8 md:p-12 hover:bg-[#1e293b]/50 transition-colors">
+          <div className="liquid-3d-card h-full p-6 sm:p-8 md:p-12 hover:bg-[#1e293b]/50 transition-colors">
             <div className="flex items-center gap-4 mb-6">
               <span className="flex items-center justify-center h-12 w-12 rounded-xl bg-[#0f172a] border border-[#818cf8]/30 shadow-inner text-xl">
                 ✨

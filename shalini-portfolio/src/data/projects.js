@@ -16,6 +16,22 @@ export const projects = [
   },
 
   {
+    title: "Coding Profile Tracker",
+    description:
+      "A professional-grade analyzer that aggregates coding statistics across LeetCode, Codeforces, and GeeksforGeeks. Features real-time problem-solving activity tracking, difficulty breakdowns, and interactive performance visualizations — built with a high-end 'Liquid Obsidian' aesthetic and secure JWT-guarded architecture.",
+    tech: ["React", "Node.js", "Express", "Chart.js", "Vite", "Tailwind CSS"],
+    highlights: [
+      "Unified dashboard for LeetCode, Codeforces & GFG stats",
+      "Dynamic data visualization with interactive charts",
+      "Secure backend with JWT authentication & Render hosting",
+      "Liquid Obsidian 3D-themed UI with glassmorphism effects",
+    ],
+    link: "https://github.com/shalinisingh0510/codingProfileTracker-frontend",
+    liveLink: "https://coding-profile-tracker-frontend.vercel.app/",
+    featured: true,
+  },
+
+  {
     title: "My Portfolio",
     description:
       "A high-performance developer portfolio featuring a custom 3D liquid glass design system, immersive Framer Motion animations, and a Supabase-powered dynamic blog with full-text search. Engineered with SEO-first architecture, structured data, and lazy-loaded modules — delivering a stunning, sub-second experience that ranks and converts.",

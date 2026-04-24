@@ -88,7 +88,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="p-8 md:p-12 relative overflow-hidden">
+            <div className="p-6 sm:p-8 md:p-12 relative overflow-hidden">
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
               <div className="absolute -inset-10 bg-gradient-to-br from-[#38bdf8]/10 to-transparent blur-3xl opacity-50 pointer-events-none" />
               <form onSubmit={handleSubmit} aria-label="Contact form" className="space-y-6 relative z-10">
